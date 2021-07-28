@@ -81,7 +81,7 @@
                     <div class="picture-label">Website</div>
                 </div>
 
-                <form action="insert_db.php" method="get">
+                <form action="insert_db.php" method="post">
 
                     <div class="ui input">
                         <input id="fName" name="fName" value="" type="text" onkeyup="checkShow()" placeholder="First Name..." required>
