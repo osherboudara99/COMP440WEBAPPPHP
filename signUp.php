@@ -55,6 +55,7 @@
 
     }
 </style>
+
 <html>
 
 <head>
@@ -83,8 +84,9 @@
 
                 <form action="insert_db.php" method="post">
 
+                    <input name = "test" type = "text" value="asfvdg">
                     <div class="ui input">
-                        <input id="fName" name="fName" value="" type="text" onkeyup="checkShow()" placeholder="First Name..." required>
+                        <input id="fName" name="fName" type="text" onkeyup="checkShow()" placeholder="First Name..." required>
 
                     </div>
                     <div id="notifyFirstName" class="ui black message" style="display:none;">
@@ -141,7 +143,7 @@
                     </div>
 
                     <div class="sign-button">
-                        <button type="submit" class="ui blue button" id="checkSignUp" style="opacity: 0.6;
+                        <button type="submit" name="sub" class="ui blue button" id="checkSignUp" style="opacity: 0.6;
                         cursor: not-allowed;" value="Register" ><b>Register</b></button>
 
                     </div>
