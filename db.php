@@ -5,9 +5,9 @@ $port = 3306;
 $socket = "";
 $user = "root";
 $password = "";
-$dbname = "webapp";
+$dbname = "test";
 
-$conn = new mysqli($host, $user, $password, "webapp");
+$conn = new mysqli($host, $user, $password, "test");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -15,7 +15,7 @@ else{
     echo "worked";
 }
 
-$sql = "CREATE DATABASE IF NOT EXISTS webapp";
+$sql = "CREATE DATABASE IF NOT EXISTS test";
 if ($conn->query($sql) === TRUE) {
     echo "Database created successfully";
 }

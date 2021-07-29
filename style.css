@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two&family=Raleway:ital,wght@0,400;1,300&family=Staatliches&display=swap");
+body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: top;
+    background-image:url(http://bit.ly/2gPLxZ4);
+    width: 100%;
+    height: 100%;
+    font-family: Arial, Helvetica;
+    letter-spacing: 0.02em;
+     font-weight: 400;
+    -webkit-font-smoothing: antialiased; 
+    color:antiquewhite;
+   }
+   .input {
+    width: 100%;
+    margin-bottom: 25px;
+}
+.blurred-box{
+    position: relative;
+    width: 500px;
+    padding: 50px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .5);
+    color: rgb(255, 254, 254);
+  }
+ 
+
