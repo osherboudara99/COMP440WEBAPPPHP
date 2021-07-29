@@ -23,19 +23,25 @@ $mail = strval($_POST["mail"]);
 $pass = strval($_POST["pass"]);
 $Username = strval($_POST["Username"]);
 
-$query = "INSERT INTO Users (`firstName`, `lastName`, `email`, `password`, `username`) 
-VALUES ('".strval($_POST['fName'])."', '".strval($_POST['lName'])."', '".strval($_POST['mail'])."', 
-'".strval($_POST['pass'])."', '".strval($_POST['Username'])."')";
+$query = $conn->prepare("INSERT INTO Users (`firstName`, `lastName`, `email`, `password`, `username`) 
+VALUES (?, ?, ?, ?, ?)");
+
+$query->bind_param('sssss', $fName, $lName, $mail, $pass, $Username);
 
 
-if ($conn->query($query) === TRUE){
-!$conn->commit();
-echo "Insert worked";
+if ($query->execute() === TRUE){
+    !$conn->commit();
+    echo "\nInsert worked";
+    header("Location: index.php");
+    exit();
 }
 else{
-echo "error insert" . $conn->error;
+    echo "\nInsert did not work: " . $conn->error;
+    echo "\nRedirecting......";
+    header("Refresh: 5; url=signUp.php");
+    exit();
 }
-echo $Username;
+
 
 
 ?>

@@ -2,16 +2,35 @@
 
 include("db.php");
 
+$password = strval($_POST["password_login"]);
+$username = strval($_POST["Username_login"]);
 
+$query = $conn->prepare("SELECT username, password FROM Users WHERE username = ? and password = ?");
 
-$query = "SELECT * FROM Users";
-
-$result = mysqli_query($conn, $query);
-
-
-    while($r = mysqli_fetch_array($result)){
-        echo $r['UserID']. " ". $r['UserName']. " ". $r['password'];
+$query->bind_param("ss", $username, $password);
+$result = $query->execute();
+$returned = $query->fetch();
+if ($result === TRUE){
+    if($returned > 0){
+        header("Location: welcome.php");
+        exit();
+        
     }
+    else{
+        echo "\n You are not logged in.";
+        echo "\n Redirecting back to login page........";
+        header("Refresh: 5; url=index.php");
+        exit();
+
+    }
+}
+else{
+    echo "\n Username not found or password does not exist or is incorrect";
+}
+
+
+
+
 
 
 

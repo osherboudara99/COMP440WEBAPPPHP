@@ -84,7 +84,6 @@
 
                 <form action="insert_db.php" method="post">
 
-                    <input name = "test" type = "text" value="asfvdg">
                     <div class="ui input">
                         <input id="fName" name="fName" type="text" onkeyup="checkShow()" placeholder="First Name..." required>
 
@@ -220,7 +219,7 @@
     
     }
     function hideMail() {
-        document.getElementById("notifyError").style.display = "none";
+        document.getElementById("notifyError").style.display = "block";
     }
     function hide() {
         document.getElementById("notifyPass").style.display = "none";

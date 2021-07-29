@@ -72,8 +72,9 @@
             </div>
         </div>
         <div class="picture-label">Website </div>
+        <form action="login_db.php" method="post">
         <div class="ui input">
-            <input type="Username" id="Username" onkeyup="checkShow()" placeholder="Username...">
+            <input type="Username" name="Username_login" id="Username" onkeyup="checkShow()" placeholder="Username..." required>
         </div>
         <div id="notifyError" class="ui black message" style="display:none;">
             <i class="close icon" onclick="hideMail()"></i>
@@ -82,7 +83,7 @@
             </div>
         </div>
         <div class="ui input">
-            <input type="password" id="pass" onkeyup="checkShow()" placeholder="Password...">
+            <input type="password" name="password_login" id="pass" onkeyup="checkShow()" placeholder="Password..." required>
         </div>
         <div id="notifyPass" class="ui black message" style="display:none;">
             <i class="close icon" onclick="hide()"></i>
@@ -98,7 +99,7 @@
             <a href="signUp.php">
                 <p><u>Not registered yet? Sign up here</u></p>
             </a>
-        
+            </form>
         </div>
     </div>
     </div>
