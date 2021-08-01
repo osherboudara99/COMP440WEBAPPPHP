@@ -23,10 +23,16 @@ else {
     echo $conn->error;
 }
 
-$sql2 = "CREATE TABLE IF NOT EXISTS Users (UserID INT(6) AUTO_INCREMENT, firstName varchar(25), 
-lastName varchar(25) NOT NULL, email varchar(35) NOT NULL UNIQUE, 
-password varchar(20) NOT NULL, username varchar(20) UNIQUE, 
-PRIMARY KEY (UserID, username, email) )";
+$sql2 = "CREATE TABLE IF NOT EXISTS `Users` (
+    `userid` int(10) NOT NULL AUTO_INCREMENT,
+    `firstName` varchar(45),
+    `lastName` varchar(45) NOT NULL,
+    `username` varchar(45) NOT NULL,
+    `password` varchar(45)  NOT NULL,
+    `email` varchar(45) DEFAULT NULL,
+    PRIMARY KEY (`userid`),
+    UNIQUE KEY `username_UNIQUE` (`username`),
+    UNIQUE KEY `email_UNIQUE` (`email`))";
 if ($conn->query($sql2) === TRUE) {
 }
 else {
