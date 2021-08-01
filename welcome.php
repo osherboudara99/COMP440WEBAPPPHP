@@ -1,8 +1,16 @@
+
+
+<form action="db_init.php">
 <div class="container">
     <div class="content-container">
         <h1> WELCOME YOU LOGGED IN </h1>
+
+
+        <button type="submit" name="init_db" class="ui blue button" id="init_db" style="opacity: 0.6;
+                        cursor: not-allowed;" value="Database Intialization" ><b>Database Intialization</b></button>
     </div>
 </div>
+</form>
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />

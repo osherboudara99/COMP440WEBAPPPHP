@@ -17,7 +17,7 @@ foreach ($lines as $line) {
     // If its semicolon at the end, so that is the end of one query
     if (substr(trim($line), -1, 1) == ';')  {
         // Perform the query
-        mysqli_query($link, $tempLine) or print("Error in " . $tempLine .":". mysqli_error($link));
+        mysqli_query($conn, $tempLine) or print("Error in " . $tempLine .":". mysqli_error($conn));
         // Reset temp variable to empty
         $tempLine = '';
     }

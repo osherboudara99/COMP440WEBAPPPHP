@@ -163,6 +163,7 @@ UNLOCK TABLES;
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
+DROP TABLE IF EXISTS `Users`;
 CREATE TABLE IF NOT EXISTS `Users` (
   `userid` int(10) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
@@ -172,7 +173,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
   `email` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci DEFAULT NULL,
   PRIMARY KEY (`userid`),
   UNIQUE KEY `username_UNIQUE` (`username`),
-  UNIQUE KEY `email_UNIQUE` (`email`),
+  UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -180,10 +181,8 @@ CREATE TABLE IF NOT EXISTS `Users` (
 -- Dumping data for table `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (NULL, 'Bruce', 'Wayne','batman','1234','nananana@batman.com'),(NULL,'bob', 'mylastname', 'bob','12345','bobthatsme@yahoo.com'),(NULL,'kat', 'robertson','catlover','abcd','catlover@whiskers.com'),(NULL,'karen', 'jackson', 'doglover','efds','doglover@bark.net'),(NULL,'jane', 'doe', 'jdoe','25478','jane@doe.com'),(NULL,'john', 'smith', 'jsmith','1111','jsmith@gmail.com'),(NULL, 'matty', 'wisconsin', 'matty','2222','matty@csun.edu'),(NULL, 'Robert', 'james', 'notbob','5555','stopcallingmebob@yahoo.com'),(NULL,'packer', 'milton', 'pacman','9999','pacman@gmail.com'),(NULL,'Scooby', 'Doo', 'scooby','8888','scooby@doo.net');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `Users` WRITE;
+INSERT INTO `Users` VALUES (1, 'Bruce', 'Wayne','batman','1234','nananana@batman.com'),(2,'bob', 'mylastname', 'bob','12345','bobthatsme@yahoo.com'),(3,'kat', 'robertson','catlover','abcd','catlover@whiskers.com'),(4,'karen', 'jackson', 'doglover','efds','doglover@bark.net'),(5,'jane', 'doe', 'jdoe','25478','jane@doe.com'),(6,'john', 'smith', 'jsmith','1111','jsmith@gmail.com'),(7, 'matty', 'wisconsin', 'matty','2222','matty@csun.edu'),(8, 'Robert', 'james', 'notbob','5555','stopcallingmebob@yahoo.com'),(9,'packer', 'milton', 'pacman','9999','pacman@gmail.com'),(10,'Scooby', 'Doo', 'scooby','8888','scooby@doo.net');
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
