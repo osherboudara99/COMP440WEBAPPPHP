@@ -1,0 +1,92 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster+Two&family=Raleway:ital,wght@0,400;1,300&family=Staatliches&display=swap");
+body {
+   
+    padding: 20px;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: top;
+    background-image:url(https://www.bing.com/th/id/OGC.0b3d0c7d4cba82343643a5f4c48e2fba?pid=1.7&rurl=https%3a%2f%2fmedia1.giphy.com%2fmedia%2f5xtDarsUgCwZMXqcVQA%2fsource.gif&ehk=cTbjGTK%2fM60pF6fAavr00uwejGtiyT%2bDn%2bB56mumbSQ%3d);
+    width: 100%;
+    height: 100%;
+    
+    letter-spacing: 0.02em;
+     font-weight: 400;
+    -webkit-font-smoothing: antialiased; 
+    color:antiquewhite;
+   }
+   .input {
+    width: 100%;
+   
+  }
+ 
+  
+  /* Header/Blog Title */
+  .header {
+    padding: 30px;
+    font-size: 40px;
+    text-align: center;
+    
+  }
+  
+  
+  /* Create two unequal columns that floats next to each other */
+  /* Left column */
+  .leftcolumn {
+    float: left;
+    width: 75%;
+   
+
+  }
+  
+  /* Right column */
+  .rightcolumn {
+    float: left;
+    width: 25%;
+    padding-left: 20px;
+  }
+  
+  /* Fake image */
+  .fakeimg {
+    
+    width: 100%;
+    padding: 20px;
+  }
+  
+  /* Add a card effect for articles */
+  .card {
+    
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 20px;
+    text-align: center;
+    
+    margin-top: 20px;
+  }
+  .blurred-box{
+    position: relative;
+   
+    padding: 50px;
+    box-shadow: 0 30px 40px rgba(0, 0, 0, .5);
+    color: rgb(255, 254, 254);
+  }
+  
+  /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
+  @media screen and (max-width: 800px) {
+    .leftcolumn, .rightcolumn {
+      width: 100%;
+      padding: 0;
+    }
+  }
+

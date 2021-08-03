@@ -1,7 +1,5 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <style>
-    
     .sign-up {
         display: flex;
         flex-direction: column;
@@ -118,12 +116,7 @@
                     <div class="ui input">
                         <input id="mail" name="mail" type="email" onkeyup="checkShow()" placeholder="Email..." required>
                     </div>
-                    <div id="notifyError" class="ui black message" style="display:none;">
-                        <i class="close icon" onclick="hideMail()"></i>
-                        <div class="header">
-                            Your email is required.
-                        </div>
-                    </div>
+                   
                     <div class="ui input">
                         <input id="pass" name="pass" type="password" onkeyup="checkShow()" placeholder="Password..." required>
                     </div>
@@ -140,6 +133,12 @@
                         <i class="close icon" onclick="hideConfirmPass()"></i>
                         <div class="header">
                             Your passwords must match.
+                        </div>
+                    </div>
+                    <div id="notifyError" class="ui black message" style="display:block;">
+                        <i class="close icon" onclick="hideMail()"></i>
+                        <div class="header">
+                            Your email has been used before.
                         </div>
                     </div>
 
@@ -246,4 +245,3 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.css"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.js"></script>
 <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
-

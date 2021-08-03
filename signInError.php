@@ -1,9 +1,11 @@
 <style>
+    
     .signup-button p {
         line-height: 1.5;
         text-align: center;
         color:antiquewhite;
         margin-top: 10%;
+
     }
 
     .content-container {
@@ -48,15 +50,12 @@
         line-height: normal;
         display: block;
         text-align: center;
-      
     }
-  
     .input {
         margin-bottom: 15px;
         margin-top: 10px;
     }
-    
-   
+
 
 
 
@@ -82,16 +81,16 @@
         <div id="notifyError" class="ui black message" style="display:none;">
             <i class="close icon" onclick="hideMail()"></i>
             <div class="header">
-                Your username was incorrect.
+                Your username was incorrect or not in the system.
             </div>
         </div>
         <div class="ui input">
             <input type="password" name="password_login" id="pass" onkeyup="checkShow()" placeholder="Password..." required>
         </div>
-        <div id="notifyPass" class="ui black message" style="display:none;">
+        <div id="notifyPass" class="ui black message" style="display:block;">
             <i class="close icon" onclick="hide()"></i>
             <div class="header">
-                Your password was incorrect.
+                Your username or password was incorrect.
             </div>
         </div>
         <div class="sign-button">

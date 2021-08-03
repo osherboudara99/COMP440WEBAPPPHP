@@ -12,14 +12,14 @@ $result = $query->execute();
 $returned = $query->fetch();
 if ($result === TRUE){
     if($returned > 0){
-        header("Location: welcome.php");
+        header("Location: blogCreate.php");
         exit();
         
     }
     else{
         echo "\n You are not logged in.";
         echo "\n Redirecting back to login page........";
-        header("Refresh: 5; url=index.php");
+        header("Location: signInError.php");
         exit();
 
     }
