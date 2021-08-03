@@ -163,7 +163,6 @@ UNLOCK TABLES;
 
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-DROP TABLE IF EXISTS `Users`;
 CREATE TABLE IF NOT EXISTS `Users` (
   `userid` int(10) NOT NULL AUTO_INCREMENT,
   `firstName` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
@@ -182,7 +181,7 @@ CREATE TABLE IF NOT EXISTS `Users` (
 --
 
 LOCK TABLES `Users` WRITE;
-INSERT INTO `Users` VALUES (1, 'Bruce', 'Wayne','batman','1234','nananana@batman.com'),(2,'bob', 'mylastname', 'bob','12345','bobthatsme@yahoo.com'),(3,'kat', 'robertson','catlover','abcd','catlover@whiskers.com'),(4,'karen', 'jackson', 'doglover','efds','doglover@bark.net'),(5,'jane', 'doe', 'jdoe','25478','jane@doe.com'),(6,'john', 'smith', 'jsmith','1111','jsmith@gmail.com'),(7, 'matty', 'wisconsin', 'matty','2222','matty@csun.edu'),(8, 'Robert', 'james', 'notbob','5555','stopcallingmebob@yahoo.com'),(9,'packer', 'milton', 'pacman','9999','pacman@gmail.com'),(10,'Scooby', 'Doo', 'scooby','8888','scooby@doo.net');
+INSERT IGNORE INTO `Users` VALUES (1, 'Bruce', 'Wayne','batman','1234','nananana@batman.com'),(2,'bob', 'mylastname', 'bob','12345','bobthatsme@yahoo.com'),(3,'kat', 'robertson','catlover','abcd','catlover@whiskers.com'),(4,'karen', 'jackson', 'doglover','efds','doglover@bark.net'),(5,'jane', 'doe', 'jdoe','25478','jane@doe.com'),(6,'john', 'smith', 'jsmith','1111','jsmith@gmail.com'),(7, 'matty', 'wisconsin', 'matty','2222','matty@csun.edu'),(8, 'Robert', 'james', 'notbob','5555','stopcallingmebob@yahoo.com'),(9,'packer', 'milton', 'pacman','9999','pacman@gmail.com'),(10,'Scooby', 'Doo', 'scooby','8888','scooby@doo.net');
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
