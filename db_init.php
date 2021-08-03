@@ -23,4 +23,6 @@ foreach ($lines as $line) {
     }
 }
  echo "Tables imported successfully";
+ header("Location: blogCreate.php");
+ exit();
 ?>

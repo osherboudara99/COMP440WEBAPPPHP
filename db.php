@@ -7,7 +7,7 @@ $user = "comp440";
 $password = "pass1234";
 $dbname = "webapp";
 
-$conn = new mysqli($host, $user, $password, $dbname);
+$conn = new mysqli($host, $user, $password,$dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

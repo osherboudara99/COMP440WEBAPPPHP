@@ -12,7 +12,7 @@ $result = $query->execute();
 $returned = $query->fetch();
 if ($result === TRUE){
     if($returned > 0){
-        header("Location: blogCreate.php");
+        header("Location: welcome.php");
         exit();
         
     }
