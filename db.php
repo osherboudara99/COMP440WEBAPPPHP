@@ -11,9 +11,7 @@ $conn = new mysqli($host, $user, $password, $dbname);
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-else{
-    
-}
+
 
 $sql = "CREATE DATABASE IF NOT EXISTS webapp";
 if ($conn->query($sql) === TRUE) {
