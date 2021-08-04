@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
 <link rel="stylesheet" href="style2.css">
 <script src="blogCreateFunctions.js"></script>
-
+<form action="createblog_db.php" method="post">
 <div id="title">
 <meta charset="UTF-8">
 <div class="header">
@@ -35,7 +35,7 @@
     <h1 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;">Blog Name</h1>
 </div>
 <div class = "inputBoxTitle">
-  <input type="text" value="" id="editTitleBox" placeholder="Blog Name...."style="display:none;width:400px;">
+  <input type="text" value="" id="editTitleBox" name= "subject" placeholder="Blog Name...."style="display:none;width:400px;" required>
 </div>
   <div class ="buttonGroupTitle" id="iconGroup">
   <div class="ui vertical animated blue button"onclick="editTitle()" >
@@ -76,16 +76,20 @@
 </div>
 <div class="ui error form " style="height:60ex;">
 <div class="field error">
-    <textarea type="text" id="editDescrBox" value="" placeholder="Description..." style="height:60ex; display:none;"></textarea>
+    <textarea type="text" id="editDescrBox" name="description" value="" placeholder="Description..." style="height:60ex; display:none;" required></textarea>
     </div>
     <div class="Description box">
 <h2 class ="descr" id="displayDescr"style="font-family:Lobster Two; display:block; color:antiquewhite;">Description</h2>
 </div>
 </div>
-
 </div>
 </div>
 </div>
+<div class="submit-blog-button">
+            <button class="ui blue button" id="blog_submit_Button" type="submit" style="opacity: 0.6;
+            cursor: not-allowed;" >Submit Blog</button>
+        </div>
+</form>
 
   
 <div class ="leftcolumn"style="margin-left:10%;" >
@@ -114,6 +118,7 @@
   </div>
 </div>
 </div>
+</form>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>

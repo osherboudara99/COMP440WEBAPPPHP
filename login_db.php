@@ -1,9 +1,11 @@
 <?php 
 
 include("db.php");
-
+session_start();
 $password = strval($_POST["password_login"]);
 $username = strval($_POST["Username_login"]);
+$_SESSION['username'] = $username;
+$_SESSION['password'] = $password;
 
 $query = $conn->prepare("SELECT username, password FROM Users WHERE username = ? and password = ?");
 
