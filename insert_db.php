@@ -38,7 +38,7 @@ if ($query->execute() === TRUE){
 else{
     echo "\nInsert did not work: " . $conn->error;
     echo "\nRedirecting......";
-    header("Refresh: 5; url=signUp.php");
+    header("Location: signUpError.php");
     exit();
 }
 

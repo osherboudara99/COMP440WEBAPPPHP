@@ -138,7 +138,7 @@
                     <div id="notifyError" class="ui black message" style="display:block;">
                         <i class="close icon" onclick="hideMail()"></i>
                         <div class="header">
-                            Your email has been used before.
+                            Either your email and/or username has been used before.
                         </div>
                     </div>
 
