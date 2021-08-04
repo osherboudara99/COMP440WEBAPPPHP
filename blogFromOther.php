@@ -38,13 +38,13 @@
   <input type="text" value="" id="editTitleBox" placeholder="Blog Name...."style="display:none;width:400px;">
 </div>
   <div class ="buttonGroupTitle" id="iconGroup">
-  <div class="ui vertical animated blue button"onclick="editTitle()" >
+  <div class="ui vertical animated blue button"style="display:none;"onclick="editTitle()" >
   <div class="hidden content">Edit</div>
   <div class="visible content">
     <i class="edit icon" ></i>
   </div>
 </div>
-<div class="ui vertical animated blue button" onclick="saveTitle()" >
+<div class="ui vertical animated blue button" style="display:none;" onclick="saveTitle()" >
   <div class="hidden content">Save</div>
   <div class="visible content">
     <i class="save icon"></i>
@@ -56,18 +56,18 @@
 </div>
 
 <div class="row">
-  <div class="leftcolumn" style="margin-left:10%;">
+  <div class="leftcolumn">
     <div class="card">
     <div class="blurred-box">
-        <div style="margin-left:124ex;" class ="descriptionButtonGroup">
-  <div class="ui vertical animated blue button"   onclick="editDescr()">
+        <div style="margin-left:120ex;" class ="descriptionButtonGroup">
+  <div class="ui vertical animated blue button" style="display:none;"  onclick="editDescr()">
   <div class="hidden content">Edit</div>
   <div class="visible content">
     <i class="edit icon"></i>
   </div>
 </div>
 
-<div class="ui vertical animated blue button"  onclick="saveDescr()" >
+<div class="ui vertical animated blue button" style="display:none;"  onclick="saveDescr()" >
   <div class="hidden content">Save</div>
   <div class="visible content">
     <i class="save icon"></i>
@@ -87,12 +87,56 @@
 </div>
 </div>
 
-  
-<div class ="leftcolumn"style="margin-left:10%;" >
+  <div class="rightcolumn">
+
     <div class="card">
-    <div class="blurred-box" >
+    <div class="blurred-box">
+      <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;">Comments</h2>
+      <div class="mini ui vertical animated blue button" style="margin-left:16ex;" onclick="addComment()">
+  <div class="hidden content">Add</div>
+  <div class="visible content">
+    <i class="plus icon" ></i>
+  </div>
+</div>
+<div class="ui error form " style="height:60ex;">
+<div class="field error">
+    <textarea type="text" id="editCommentsBox" value="" placeholder="Comments..." style="height:15ex; display:none;">
+    </textarea>
+    <div class = "positiveButtons">
+    <div style="width:32%; display:none" id="saveCommentButton" class="mini ui vertical animated blue button"  onclick="saveComment()" >
+  <div class="hidden content">Save</div>
+  <div class="visible content">
+    <i class="save icon"></i>
+  </div>
+</div>
+<div style="width:32%; display:none" id="likeCommentButton" class="mini ui vertical animated blue button"  onclick="likeComment()" >
+  <div class="hidden content">Like</div>
+  <div class="visible content">
+    <i class="thumbs up icon"></i>
+  </div>
+</div>
+<div style="width:30%; display:none" id="dislikeCommentButton" class="mini ui vertical animated blue button"  onclick="dislikeComment()" >
+  <div class="hidden content">Dislike</div>
+  <div class="visible content">
+    <i class="thumbs down icon"></i>
+  </div>
+</div>
+
+
+</div>
+
+</div>
+    <div id="SavedCommentBox"> 
+</div>
+</div>
+    </div>
+</div>
+</div>
+<div class ="leftcolumn">
+    <div class="card">
+    <div class="blurred-box">
       <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;">Tags</h2>
-      <div class="mini ui vertical animated blue button" style="margin-left:175ex;" onclick="addTag()">
+      <div class="mini ui vertical animated blue button" style=" display: none;margin-left:175ex;" onclick="addTag()">
   <div class="hidden content">Add</div>
   <div class="visible content">
     <i class="plus icon" ></i>

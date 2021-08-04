@@ -4,7 +4,6 @@
 <div class="container">
     <div class="content-container">
         <h1> WELCOME YOU LOGGED IN </h1>
-
         <button type="submit" name="init_db" class="ui blue button" id="init_db"  value="Database Intialization" ><b>Database Intialization</b></button>
     </div>
 </div>
