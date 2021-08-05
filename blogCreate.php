@@ -22,6 +22,14 @@
     display: inline-block;
   }
 </style>
+<div class="three ui blue buttons" style="margin-bottom:2%; margin-top:2%;">
+  <button class="ui button" style="width:13%; margin-left:15%"onClick="location.href='blogCreate.php'">
+  <i class=" edit icon"></i>Create Blog</button>
+  <button class="ui button"style="width:13%;margin-left:15%" onClick="location.href='blogFromOther.php'">
+  <i class=" book icon"></i>Blogs</button>
+  <button class="ui button" style="width:13%; margin-left:15%"onclick="openCity(event, 'London')">
+  <i class=" file alternate icon"></i>My Blogs</button>
+</div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
 <link rel="stylesheet" href="style2.css">
 <script src="blogCreateFunctions.js"></script>
