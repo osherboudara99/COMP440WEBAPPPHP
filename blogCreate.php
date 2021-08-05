@@ -93,11 +93,6 @@
 </div>
 </div>
 </div>
-<div class="submit-blog-button">
-            <button class="ui blue button" id="blog_submit_Button" type="submit" style="opacity: 0.6;
-            cursor: not-allowed;" >Submit Blog</button>
-        </div>
-</form>
 
   
 <div class ="leftcolumn"style="margin-left:10%;" >
@@ -112,7 +107,7 @@
 </div>
 <div class="ui error form " >
 <div class="field error">
-    <input type="text" id="editTagBox" value="" placeholder="Add a Tag..." style="width:94%; display:none;">
+    <input type="text" name="tags" id="editTagBox" value="" placeholder="Add Tags Separated By Commas..." style="width:94%; display:none;">
     <div style="width:5%; display:none" id="saveTagButton" class="small ui vertical animated blue button"  onclick="saveTag()" >
   <div class="hidden content">Save</div>
   <div class="visible content">
@@ -126,6 +121,10 @@
   </div>
 </div>
 </div>
+<div class="submit-blog-button">
+            <button class="ui blue button" id="blog_submit_Button" type="submit" style="opacity: 0.6;
+            cursor: not-allowed;" >Submit Blog</button>
+        </div>
 </form>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

@@ -31,6 +31,7 @@ CREATE TABLE `blogs` (
   PRIMARY KEY (`blogid`),
   KEY `idx_blogs_pdate` (`pdate`),
   KEY `blogs_ibfk_1_idx` (`userid`),
+  UNIQUE KEY `userID_date_UNIQUE` (`userid`, `pdate`),
   CONSTRAINT `blogs_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `Users` (`UserID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
