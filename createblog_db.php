@@ -31,10 +31,12 @@ foreach($tags as $substr){
 if ($result_blog === TRUE){
     !$conn->commit();
     echo "\nInsert worked";
+    header("location: createBlogSuccess.php"); 
 
 }
 else{
     echo "\nInsert did not work: " . $conn->error;
+    header("location: createBlogError.php"); 
 }
 
 

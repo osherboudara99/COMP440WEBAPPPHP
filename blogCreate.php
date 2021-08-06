@@ -99,10 +99,16 @@
     <div class="card">
     <div class="blurred-box" >
       <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;">Tags</h2>
-      <div class="mini ui vertical animated blue button" style="margin-left:175ex;" onclick="addTag()">
-  <div class="hidden content">Add</div>
+      <div class="mini ui vertical animated blue button" style="margin-left:165ex; " onclick="editTag()">
+  <div class="hidden content">Edit</div>
   <div class="visible content">
-    <i class="plus icon" ></i>
+    <i class="edit icon" ></i>
+  </div>
+</div>
+<div class="mini ui vertical animated blue button"  onclick="saveTag()" >
+  <div class="hidden content">Save</div>
+  <div class="visible content">
+    <i class="save icon"></i>
   </div>
 </div>
 <div class="ui error form " >
@@ -115,6 +121,8 @@
 </div>
 </div>
 <div id="savedTagBox">
+  <h3 id="displayTags"style="font-family:Lobster Two; display:none; text-align:center;"></h3>
+
 
 
     </div>
@@ -122,8 +130,7 @@
 </div>
 </div>
 <div class="submit-blog-button">
-            <button class="ui blue button" id="blog_submit_Button" type="submit" style="opacity: 0.6;
-            cursor: not-allowed;" >Submit Blog</button>
+            <button class="ui blue button" id="blog_submit_Button" type="submit">Submit Blog</button>
         </div>
 </form>
 

@@ -107,36 +107,20 @@ function dislikeComment(){
     }
    
 }
-function addTag(){
+function editTag(){
     var title =document.getElementById("editTagBox");
     title.style.display = "inline-block";
     var textBox = document.getElementById("saveTagButton");
-    textBox.style.display="inline-block";
+    textBox.style.display="none";
    
 }
 function saveTag(){
     var title =document.getElementById("editTagBox");
     var written =title.value;
-    
+    title.value='';
     title.style.display = "none";
-    var textBox = document.getElementById("saveTagButton");
-    textBox.style.display="none";
-    if(title.value !== ''){
-        title.value='';
-var divOne = document.getElementById('savedTagBox');
-// create a new element
-var divThree= document.createElement('div');
-// add a class 'three' to a newly created element
-divThree.classList.add('blurred-box');
-// and add a newly created element to divOne
-divOne.appendChild(divThree);
-
-// now create a div for text, set its class to 'text' and append it to divThree
-var txt = document.createElement('h4');
-txt.classList.add('tag');
-txt.innerHTML = written;
-txt.setAttribute('style','font-family:Lobster Two; display:inline-block; color:antiquewhite');
-divThree.appendChild(txt);
-divThree.setAttribute('style', 'width:18%; display:inline-block; margin-inline:2ex;');
-}
+      
+var divOne = document.getElementById('displayTags');
+divOne.innerHTML=written;
+divOne.style.display="block";
 }
