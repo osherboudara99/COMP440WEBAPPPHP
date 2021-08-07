@@ -117,7 +117,6 @@ function editTag(){
 function saveTag(){
     var title =document.getElementById("editTagBox");
     var written =title.value;
-    title.value='';
     title.style.display = "none";
       
 var divOne = document.getElementById('displayTags');
