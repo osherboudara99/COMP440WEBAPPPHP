@@ -14,6 +14,4 @@ $result = $query->execute();
 
 
 
-
-
 ?>
