@@ -9,8 +9,8 @@ INNER JOIN blogstags ON blogs.blogid = blogstags.blogid
 WHERE username != ?
 GROUP BY blogstags.blogid");
 
-$query->bind_param("s", $_SESSION['username']);
-$result = $query->execute();
+$query_viewblogs->bind_param("s", $_SESSION['username']);
+$result = $query_viewblogs->execute();
 
 
 
