@@ -18,11 +18,11 @@ $returned_blog = $query_blog_saved->fetch();
 
 $query_tags = $conn->prepare("INSERT INTO blogstags (`blogid`,`tag`) 
     VALUES ((SELECT blogid FROM blogs WHERE userID = 
-    (SELECT userID FROM Users WHERE username = ? AND password = ?) AND pdate = DATE(NOW()) ), ?)");
+    (SELECT userID FROM Users WHERE username = ? AND password = ?) AND pdate = DATE(NOW()) AND subject = ? ), ?)");
 
 foreach($tags as $substr){
     $substr = strval($substr);
-    $query_tags->bind_param("sss", $_SESSION['username'], $_SESSION['password'], $substr);
+    $query_tags->bind_param("ssss", $_SESSION['username'], $_SESSION['password'], $subject, $substr);
     $query_tags->execute();
 
 }
