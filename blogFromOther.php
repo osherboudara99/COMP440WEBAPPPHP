@@ -56,7 +56,7 @@ ORDER BY pdate DESC");
 $i=0;
 while($row = mysqli_fetch_array($query_viewblogs)) {
   ?>
-?>
+<hr size="8" width="90%" color="white">  
 <div class="header">
 <div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
       <div class="titleCont">
