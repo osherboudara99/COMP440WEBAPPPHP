@@ -46,21 +46,23 @@ $query_viewblogs = $conn->query("SELECT subject, description, pdate, GROUP_CONCA
 INNER JOIN blogs ON Users.userid = blogs.userid 
 INNER JOIN blogstags ON blogs.blogid = blogstags.blogid 
 WHERE username != '".$_SESSION['username']."'
-GROUP BY blogstags.blogid");
+GROUP BY blogstags.blogid 
+ORDER BY pdate DESC");
 
-$result = $query_viewblogs->execute();
+
 
 ?>
 <?php
 $i=0;
-$stmt_result = $result->get_result();
-while($row = $stmt_result->fetch_assoc()){
+while($row = mysqli_fetch_array($query_viewblogs)) {
+  ?>
 ?>
 <div class="header">
-<div class="blurred-box" id="titleBlurredBox"style=" height:8ex;margin-left:20%;margin-right:20%; vertical-align:top;">
+<div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
       <div class="titleCont">
     <h1 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo $row["subject"]; ?></h1>
     <h4 class = "head" id="displayUser"style="font-family:Lobster Two; display:block;"><?php echo $row["username"]; ?></h4>
+    <h5 class = "head" id="displayDate"style="font-family:Lobster Two; display:block;"><?php echo $row["pdate"]; ?></h5>
 </div>
 </div>
 </div>  
@@ -79,7 +81,7 @@ while($row = $stmt_result->fetch_assoc()){
 
     <div class="card">
     <div class="blurred-box"style="height:20ex; margin-left:10%;">
-      <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;">Tags</h2>
+      <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo $row["tags"]; ?></h2>
 
 
 
