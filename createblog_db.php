@@ -10,8 +10,7 @@ $tags = explode(',', $tags_string);
 
 
 
-$query_blog_saved = $conn->prepare("INSERT INTO blogs (`subject`, `description`, `pdate`, `userID`) 
-VALUES (?, ?, NOW(), (SELECT userID FROM Users WHERE username = ? and password = ?))");
+$query_blog_saved = $conn->prepare("CALL insert_blog(?, ?, NOW(), (SELECT userID FROM Users WHERE username = ? and password = ?))");
 
 $query_blog_saved->bind_param("ssss", $subject, $description, $_SESSION['username'], $_SESSION['password']);
 $result_blog = $query_blog_saved->execute();

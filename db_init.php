@@ -22,7 +22,26 @@ foreach ($lines as $line) {
         $tempLine = '';
     }
 }
+
+$query_delimiter = $conn->prepare(" 
+CREATE DEFINER = `comp440`@`localhost` PROCEDURE 
+`insert_blog` (sub varchar(250), des varchar (500), postDate varchar(25), user_id varchar(25))
+BEGIN IF
+(SELECT COUNT(*) FROM `blogs` WHERE `userID` = userID AND pdate = DATE(NOW())) < 2
+THEN INSERT INTO `blogs` (`subject`, `description`, `pdate`, `userID`) VALUES (sub, des, postDate, user_id);
+END IF;
+END;");
+
+ /*$result = $query_delimiter->execute();
+
+ if($result === TRUE){
+
+*/
  echo "Tables imported successfully";
  header("Location: blogFromOther.php");
  exit();
+ /*}
+ else{
+     echo $conn->error;
+ }*/
 ?>
