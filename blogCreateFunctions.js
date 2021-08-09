@@ -63,7 +63,7 @@ function saveComment(){
     var textBox3 = document.getElementById("dislikeCommentButton");
     textBox3.style.display="none";
     if(title.value !== ''){
-        title.value=" ";
+     
     var divOne = document.getElementById('SavedCommentBox');
 // create a new element
 var divThree= document.createElement('div');
