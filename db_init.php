@@ -23,25 +23,25 @@ foreach ($lines as $line) {
     }
 }
 
-$query_delimiter = $conn->prepare(" 
-CREATE DEFINER = `comp440`@`localhost` PROCEDURE 
-`insert_blog` (sub varchar(250), des varchar (500), postDate varchar(25), user_id varchar(25))
+mysqli_query($conn, 'DROP PROCEDURE IF EXISTS `insert_blog`');
+
+$query_delimiter = mysqli_query($conn, 'CREATE DEFINER = `comp440`@`localhost` PROCEDURE `insert_blog` (sub varchar(250), des varchar (500), postDate varchar(25), user_id varchar(25))
 BEGIN IF
-(SELECT COUNT(*) FROM `blogs` WHERE `userID` = userID AND pdate = DATE(NOW())) < 2
+(SELECT COUNT(*) FROM `blogs` WHERE blogs.userID = user_id AND pdate = DATE(NOW())) < 2
 THEN INSERT INTO `blogs` (`subject`, `description`, `pdate`, `userID`) VALUES (sub, des, postDate, user_id);
 END IF;
-END;");
+END;');
 
- /*$result = $query_delimiter->execute();
 
- if($result === TRUE){
 
-*/
+ if($query_delimiter === TRUE){
+
+
  echo "Tables imported successfully";
  header("Location: blogFromOther.php");
  exit();
- /*}
+ }
  else{
      echo $conn->error;
- }*/
+ }
 ?>

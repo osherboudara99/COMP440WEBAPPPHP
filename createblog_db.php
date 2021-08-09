@@ -7,10 +7,10 @@ $description = htmlspecialchars($_POST["description"]);
 $tags_string = strval($_POST["tags"]);
 
 $tags = explode(',', $tags_string);
+$query_checkcount = $conn->query("SELECT * FROM `blogs` WHERE blogs.userid = (SELECT userID FROM Users WHERE username = '".$_SESSION['username']."') AND pdate = DATE(NOW())");
+$returned_numrows = mysqli_num_rows($query_checkcount);
 
-
-
-$query_blog_saved = $conn->prepare("CALL insert_blog(?, ?, NOW(), (SELECT userID FROM Users WHERE username = ? and password = ?))");
+$query_blog_saved = $conn->prepare('CALL insert_blog(?, ?, NOW(), (SELECT userID FROM Users WHERE username = ? and password = ?))');
 
 $query_blog_saved->bind_param("ssss", $subject, $description, $_SESSION['username'], $_SESSION['password']);
 $result_blog = $query_blog_saved->execute();
@@ -27,15 +27,22 @@ foreach($tags as $substr){
 
 }
 
-if ($result_blog === TRUE){
-    !$conn->commit();
-    echo "\nInsert worked";
-    header("location: createBlogSuccess.php"); 
 
-}
-else{
-    echo "\nInsert did not work: " . $conn->error;
-    header("location: createBlogError.php"); 
+$returned_count = $query_checkcount->fetch_assoc();
+
+if ($result_blog === TRUE){
+    if($returned_numrows < 2)
+    {
+        !$conn->commit();
+        echo "\nInsert worked";
+        header("location: createBlogSuccess.php"); 
+    }
+    else
+    {
+        echo "\nInsert did not work: " . $conn->error;
+        header("location: createBlogError.php"); 
+    }
+
 }
 
 
