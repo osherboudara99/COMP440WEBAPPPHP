@@ -22,7 +22,7 @@
     display: inline-block;
   }
 </style>
-<div class="three ui blue buttons" style="margin-bottom:2%; margin-top:2%; ">
+<div class="three ui blue buttons" style="margin-bottom:2%; margin-top:2%;">
   <button class="ui button" style="width:13%; margin-left:15%"onClick="location.href='blogCreate.php'">
   <i class=" edit icon"></i>Create Blog</button>
   <button class="ui button"style="width:13%;margin-left:15%" onClick="location.href='blogFromOther.php'">
@@ -42,19 +42,20 @@ include("db.php");
 
 session_start();
 
-$query_viewblogs = $conn->query("SELECT subject, description, pdate, GROUP_CONCAT(tag SEPARATOR ',') AS tags, username FROM Users 
+$query_viewownblogs = $conn->query("SELECT subject, description, pdate, GROUP_CONCAT(tag SEPARATOR ',') AS tags, username FROM Users 
 INNER JOIN blogs ON Users.userid = blogs.userid 
 INNER JOIN blogstags ON blogs.blogid = blogstags.blogid 
-WHERE username != '".$_SESSION['username']."'
-GROUP BY blogstags.blogid 
+WHERE username = '".$_SESSION['username']."'
+GROUP BY blogstags.blogid
 ORDER BY pdate DESC");
+
 
 
 
 ?>
 <?php
 $i=0;
-while($row = mysqli_fetch_array($query_viewblogs)) {
+while($row = mysqli_fetch_array($query_viewownblogs)) {
   ?>
 <hr size="8" width="90%" color="white">  
 <div class="header">
@@ -95,40 +96,8 @@ while($row = mysqli_fetch_array($query_viewblogs)) {
     <div class="card">
     <div class="blurred-box">
       <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;">Comments</h2>
-      <div class="mini ui vertical animated blue button" style="margin-left:44ex;" onclick="addComment()">
-  <div class="hidden content">Add</div>
-  <div class="visible content">
-    <i class="plus icon" ></i>
-  </div>
-</div>
+      
 <div class="ui error form " style="height:56ex;">
-<div class="field error">
-    <textarea type="text" id="editCommentsBox" value="" placeholder="Comments..." style="height:15ex; display:none;">
-    </textarea>
-    <div class = "positiveButtons">
-    <div style="width:32%; display:none" id="saveCommentButton" class="mini ui vertical animated blue button"  onclick="saveComment()" >
-  <div class="hidden content">Save</div>
-  <div class="visible content">
-    <i class="save icon"></i>
-  </div>
-</div>
-<div style="width:32%; display:none" id="likeCommentButton" class="mini ui vertical animated blue button"  onclick="likeComment()" >
-  <div class="hidden content">Like</div>
-  <div class="visible content">
-    <i class="thumbs up icon"></i>
-  </div>
-</div>
-<div style="width:30%; display:none" id="dislikeCommentButton" class="mini ui vertical animated blue button"  onclick="dislikeComment()" >
-  <div class="hidden content">Dislike</div>
-  <div class="visible content">
-    <i class="thumbs down icon"></i>
-  </div>
-</div>
-
-
-</div>
-
-</div>
     <div id="SavedCommentBox"> 
 </div>
 </div>
@@ -146,4 +115,3 @@ $i++;
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.css"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.js"></script>
 <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
-

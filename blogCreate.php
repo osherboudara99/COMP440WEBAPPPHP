@@ -27,7 +27,7 @@
   <i class=" edit icon"></i>Create Blog</button>
   <button class="ui button"style="width:13%;margin-left:15%" onClick="location.href='blogFromOther.php'">
   <i class=" book icon"></i>Blogs</button>
-  <button class="ui button" style="width:13%; margin-left:15%"onclick="openCity(event, 'London')">
+  <button class="ui button" style="width:13%; margin-left:15%"onclick="location.href='blogFromMe.php'">
   <i class=" file alternate icon"></i>My Blogs</button>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
@@ -36,6 +36,7 @@
 <form action="createblog_db.php" method="post">
 <div id="title">
 <meta charset="UTF-8">
+<hr size="8" width="90%" color="white">  
 <div class="header">
 <div class="blurred-box" style=" vertical-align:top;">
     <div class="ui action input error" id="titleGroupBox">

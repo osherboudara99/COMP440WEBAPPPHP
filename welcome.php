@@ -5,11 +5,13 @@
 
 
 <form action="db_init.php">
-<div class="container">
-    <div class="content-container">
-        <h1> WELCOME YOU LOGGED IN </h1>
-        <button type="submit" name="init_db" class="ui blue button" id="init_db"  value="Database Intialization" ><b>Database Intialization</b></button>
-    </div>
+
+<div class="content-container"> 
+    <div class="blurred-box" style="margin-top:20%;margin-left:35%; position:fixed;">
+        <h1 style="font-family:Lobster Two; display:block; color:antiquewhite; text-align:center;">
+        <i class=" home square icon"></i> Welcome you logged in! </h1>
+        <button type="submit" name="init_db" class="ui blue button" id="init_db" style="margin-left:30%" value="Database Intialization" ><b>Database Intialization</b></button>
+</div>
 </div>
 </form>
 
