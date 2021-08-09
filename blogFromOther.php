@@ -3,9 +3,9 @@
     .head{
     color:antiquewhite;
     font-family: cursive;
-    font-size: 3em;
+   
     text-align:center;
-    margin-left:25ex;
+  
     
   }
   #titleGroupBox{
@@ -32,82 +32,76 @@
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
 <link rel="stylesheet" href="style2.css">
-<script src="blogCreateFunctions.js"></script>
+<script src="blogShowFunctions.js"></script>
 
 
 <div id="title">
 <meta charset="UTF-8">
+<?php
+include("db.php");
+
+session_start();
+
+$query_viewblogs = $conn->query("SELECT subject, description, pdate, GROUP_CONCAT(tag SEPARATOR ',') AS tags, username FROM Users 
+INNER JOIN blogs ON Users.userid = blogs.userid 
+INNER JOIN blogstags ON blogs.blogid = blogstags.blogid 
+WHERE username != '".$_SESSION['username']."'
+GROUP BY blogstags.blogid 
+ORDER BY pdate DESC");
+
+
+
+?>
+<?php
+$i=0;
+while($row = mysqli_fetch_array($query_viewblogs)) {
+  ?>
+<hr size="8" width="90%" color="white">  
 <div class="header">
-<div class="blurred-box" style=" vertical-align:top;">
-    <div class="ui action input error" id="titleGroupBox">
+<div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
       <div class="titleCont">
-    <h1 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;">Blog Name</h1>
-</div>
-<div class = "inputBoxTitle">
-  <input type="text" value="" id="editTitleBox" placeholder="Blog Name...."style="display:none;width:400px;">
-</div>
-  <div class ="buttonGroupTitle" id="iconGroup">
-  <div class="ui vertical animated blue button"style="display:none;"onclick="editTitle()" >
-  <div class="hidden content">Edit</div>
-  <div class="visible content">
-    <i class="edit icon" ></i>
-  </div>
-</div>
-<div class="ui vertical animated blue button" style="display:none;" onclick="saveTitle()" >
-  <div class="hidden content">Save</div>
-  <div class="visible content">
-    <i class="save icon"></i>
-  </div>
+    <h1 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo $row["subject"]; ?></h1>
+    <h4 class = "head" id="displayUser"style="font-family:Lobster Two; display:block;"><?php echo $row["username"]; ?></h4>
+    <h5 class = "head" id="displayDate"style="font-family:Lobster Two; display:block;"><?php echo $row["pdate"]; ?></h5>
 </div>
 </div>
 </div>  
   </div>
-</div>
 
 <div class="row">
-  <div class="leftcolumn">
+  <div class="leftcolumn"style="width:65%;">
     <div class="card">
-    <div class="blurred-box">
-        <div style="margin-left:120ex;" class ="descriptionButtonGroup">
-  <div class="ui vertical animated blue button" style="display:none;"  onclick="editDescr()">
-  <div class="hidden content">Edit</div>
-  <div class="visible content">
-    <i class="edit icon"></i>
-  </div>
-</div>
-
-<div class="ui vertical animated blue button" style="display:none;"  onclick="saveDescr()" >
-  <div class="hidden content">Save</div>
-  <div class="visible content">
-    <i class="save icon"></i>
-  </div>
-</div>
-</div>
-<div class="ui error form " style="height:60ex;">
-<div class="field error">
-    <textarea type="text" id="editDescrBox" value="" placeholder="Description..." style="height:60ex; display:none;"></textarea>
-    </div>
+    <div class="blurred-box" style="height:50ex; margin-left:10%;">
     <div class="Description box">
-<h2 class ="descr" id="displayDescr"style="font-family:Lobster Two; display:block; color:antiquewhite;">Description</h2>
+<h2 class ="descr" id="displayDescr"style="font-family:Lobster Two; display:block; color:antiquewhite;"><?php echo $row["description"]; ?></h2>
 </div>
 </div>
 
 </div>
-</div>
-</div>
 
-  <div class="rightcolumn">
+    <div class="card">
+    <div class="blurred-box"style="height:20ex; margin-left:10%;">
+      <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo $row["tags"]; ?></h2>
 
+
+
+    </div>
+  </div>
+  </div>
+
+
+
+  <div class="rightcolumn"style="width:35%;">
     <div class="card">
     <div class="blurred-box">
       <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;">Comments</h2>
-      <div class="mini ui vertical animated blue button" style="margin-left:16ex;" onclick="addComment()">
+      <div class="mini ui vertical animated blue button" style="margin-left:44ex;" onclick="addComment()">
   <div class="hidden content">Add</div>
   <div class="visible content">
     <i class="plus icon" ></i>
   </div>
 </div>
-<div class="ui error form " style="height:60ex;">
+<div class="ui error form " style="height:56ex;">
 <div class="field error">
     <textarea type="text" id="editCommentsBox" value="" placeholder="Comments..." style="height:15ex; display:none;">
     </textarea>
@@ -141,32 +135,11 @@
     </div>
 </div>
 </div>
-<div class ="leftcolumn">
-    <div class="card">
-    <div class="blurred-box">
-      <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;">Tags</h2>
-      <div class="mini ui vertical animated blue button" style=" display: none;margin-left:175ex;" onclick="addTag()">
-  <div class="hidden content">Add</div>
-  <div class="visible content">
-    <i class="plus icon" ></i>
-  </div>
-</div>
-<div class="ui error form " >
-<div class="field error">
-    <input type="text" id="editTagBox" value="" placeholder="Add a Tag..." style="width:94%; display:none;">
-    <div style="width:5%; display:none" id="saveTagButton" class="small ui vertical animated blue button"  onclick="saveTag()" >
-  <div class="hidden content">Save</div>
-  <div class="visible content">
-    <i class="save icon"></i>
-</div>
-</div>
-<div id="savedTagBox">
+<?php
+$i++;
+}
+?>
 
-
-    </div>
-  </div>
-</div>
-</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.js"></script>

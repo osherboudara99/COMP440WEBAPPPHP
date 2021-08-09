@@ -67,7 +67,7 @@
   <div class="leftcolumn" style="margin-left:10%;">
     <div class="card">
     <div class="blurred-box">
-        <div style="margin-left:124ex;" class ="descriptionButtonGroup">
+        <div style="margin-left:85%;" class ="descriptionButtonGroup">
   <div class="ui vertical animated blue button"   onclick="editDescr()">
   <div class="hidden content">Edit</div>
   <div class="visible content">
@@ -99,7 +99,7 @@
     <div class="card">
     <div class="blurred-box" >
       <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;">Tags</h2>
-      <div class="mini ui vertical animated blue button" style="margin-left:165ex; " onclick="editTag()">
+      <div class="mini ui vertical animated blue button" style="margin-left:85%; " onclick="editTag()">
   <div class="hidden content">Edit</div>
   <div class="visible content">
     <i class="edit icon" ></i>
@@ -130,7 +130,7 @@
 </div>
 </div>
 <div class="submit-blog-button">
-            <button class="ui blue button" id="blog_submit_Button" type="submit">Submit Blog</button>
+            <button class="ui blue button" id="blog_submit_Button" type="submit" style="opacity:1;">Submit Blog</button>
         </div>
 </form>
 
