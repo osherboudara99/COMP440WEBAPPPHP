@@ -6,6 +6,7 @@ $subject = strval($_POST["subject"]);
 $description = htmlspecialchars($_POST["description"]);
 $tags_string = strval($_POST["tags"]);
 
+
 $tags = explode(',', $tags_string);
 $query_checkcount = $conn->query("SELECT * FROM `blogs` WHERE blogs.userid = (SELECT userID FROM Users WHERE username = '".$_SESSION['username']."') AND pdate = DATE(NOW())");
 $returned_numrows = mysqli_num_rows($query_checkcount);

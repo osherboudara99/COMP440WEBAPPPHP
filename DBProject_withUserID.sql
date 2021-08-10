@@ -31,7 +31,7 @@ CREATE TABLE `blogs` (
   PRIMARY KEY (`blogid`),
   KEY `idx_blogs_pdate` (`pdate`),
   KEY `blogs_ibfk_1_idx` (`userid`),
-  CONSTRAINT `blogs_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `Users` (`UserID`)
+  CONSTRAINT `blogs_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `Users` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -88,7 +88,7 @@ CREATE TABLE `comments` (
   KEY `comments_ibfk_2` (`blogid`),
   KEY `test_idx` (`authorid`),
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`blogid`) REFERENCES `blogs` (`blogid`),
-  CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`authorid`) REFERENCES `Users` (`UserID`),
+  CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`authorid`) REFERENCES `Users` (`userid`),
   CONSTRAINT `sentiment_types` CHECK ((`sentiment` in (_utf8mb4'negative',_utf8mb4'positive')))
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -115,8 +115,8 @@ CREATE TABLE `follows` (
   `followerid` int(10) NOT NULL,
   PRIMARY KEY (`leaderid`,`followerid`),
   KEY `follows_ibfk_2_idx` (`followerid`),
-  CONSTRAINT `follows_ibfk_1` FOREIGN KEY (`leaderid`) REFERENCES `Users` (`UserID`),
-  CONSTRAINT `follows_ibfk_2` FOREIGN KEY (`followerid`) REFERENCES `Users` (`UserID`)
+  CONSTRAINT `follows_ibfk_1` FOREIGN KEY (`leaderid`) REFERENCES `Users` (`userid`),
+  CONSTRAINT `follows_ibfk_2` FOREIGN KEY (`followerid`) REFERENCES `Users` (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -142,7 +142,7 @@ CREATE TABLE `hobbies` (
   `hobby` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`hobby`,`userid`),
   KEY `test_idx` (`userid`),
-  CONSTRAINT `hobbies_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `Users` (`UserID`),
+  CONSTRAINT `hobbies_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `Users` (`userid`),
   CONSTRAINT `hobby_types` CHECK ((`hobby` in (_utf8mb4'hiking',_utf8mb4'swimming',_utf8mb4'calligraphy',_utf8mb4'bowling',_utf8mb4'movie',_utf8mb4'cooking',_utf8mb4'dancing')))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;

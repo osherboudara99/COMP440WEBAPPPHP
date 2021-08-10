@@ -51,11 +51,16 @@ ORDER BY pdate DESC");
 
 
 
-
 ?>
 <?php
 $i=0;
 while($row = mysqli_fetch_array($query_viewownblogs)) {
+  $query_viewcomments = $conn->query("SELECT username, sentiment, comments.description AS comment_desc, cdate FROM comments
+INNER JOIN Users
+ON comments.authorid = Users.userid
+INNER JOIN blogs
+ON blogs.blogid = comments.blogid
+WHERE blogs.subject = '".$row["subject"]."'");
   ?>
 <hr size="8" width="90%" color="white">  
 <div class="header">
@@ -89,21 +94,35 @@ while($row = mysqli_fetch_array($query_viewownblogs)) {
     </div>
   </div>
   </div>
-
+ 
 
 
   <div class="rightcolumn"style="width:35%;">
     <div class="card">
     <div class="blurred-box">
       <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;">Comments</h2>
-      
+      <?php
+$j=0;
+while($row_comments = mysqli_fetch_array($query_viewcomments)) {
+  
+  ?>    
 <div class="ui error form " style="height:56ex;">
-    <div id="SavedCommentBox"> 
+    <div id="SavedCommentBox" > 
+    <div class="blurred-box">
+    <h4 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo "Username: ", $row_comments["username"]; ?></h4>
+    <br><p style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo "Date: ", $row_comments["cdate"]; ?></p>
+    <br><p style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo "Sentiment: ", $row_comments["sentiment"]; ?></p>
+    <br><p style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo $row_comments["comment_desc"], "\n"; ?></p>
 </div>
+<?php
+$j++;
+}
+?>
 </div>
     </div>
 </div>
 </div>
+
 <?php
 $i++;
 }

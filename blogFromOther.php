@@ -51,18 +51,30 @@ ORDER BY pdate DESC");
 
 
 
+
+
+
+
 ?>
 <?php
 $i=0;
 while($row = mysqli_fetch_array($query_viewblogs)) {
+  $query_viewcomments = $conn->query("SELECT username, sentiment, comments.description AS comment_desc, cdate FROM comments
+INNER JOIN Users
+ON comments.authorid = Users.userid
+INNER JOIN blogs
+ON blogs.blogid = comments.blogid
+WHERE blogs.subject = '".$row["subject"]."'");
+  
   ?>
-<hr size="8" width="90%" color="white">  
+<hr size="8" style="margin-top:10%;" width="90%" color="white">  
+<form action="insert_comments.php" method="post">
 <div class="header">
-<div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
+<div class="blurred-box" id="titleBlurredBox"style="height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
       <div class="titleCont">
-    <h1 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo $row["subject"]; ?></h1>
-    <h4 class = "head" id="displayUser"style="font-family:Lobster Two; display:block;"><?php echo $row["username"]; ?></h4>
-    <h5 class = "head" id="displayDate"style="font-family:Lobster Two; display:block;"><?php echo $row["pdate"]; ?></h5>
+    <h1 class ="head" name="subject" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo $row["subject"]; ?></h1>
+    <h4 class = "head" name="username" id="displayUser"style="font-family:Lobster Two; display:block;"><?php echo $row["username"]; ?></h4>
+    <h5 class = "head" name="pdate" id="displayDate"style="font-family:Lobster Two; display:block;"><?php echo $row["pdate"]; ?></h5>
 </div>
 </div>
 </div>  
@@ -73,7 +85,7 @@ while($row = mysqli_fetch_array($query_viewblogs)) {
     <div class="card">
     <div class="blurred-box" style="height:50ex; margin-left:10%;">
     <div class="Description box">
-<h2 class ="descr" id="displayDescr"style="font-family:Lobster Two; display:block; color:antiquewhite;"><?php echo $row["description"]; ?></h2>
+<h2 class ="descr" name="description" id="displayDescr"style="font-family:Lobster Two; display:block; color:antiquewhite;"><?php echo $row["description"]; ?></h2>
 </div>
 </div>
 
@@ -103,10 +115,10 @@ while($row = mysqli_fetch_array($query_viewblogs)) {
 </div>
 <div class="ui error form " style="height:56ex;">
 <div class="field error">
-    <textarea type="text" id="editCommentsBox" value="" placeholder="Comments..." style="height:15ex; display:none;">
+    <textarea type="text" name="comment_desc" id="editCommentsBox" value="" placeholder="Comments..." style="height:15ex; display:none;">
     </textarea>
     <div class = "positiveButtons">
-    <div style="width:32%; display:none" id="saveCommentButton" class="mini ui vertical animated blue button"  onclick="saveComment()" >
+    <div type="submit" style="width:32%; display:none" id="saveCommentButton" class="mini ui vertical animated blue button"  onclick="saveComment()" >
   <div class="hidden content">Save</div>
   <div class="visible content">
     <i class="save icon"></i>
@@ -129,12 +141,31 @@ while($row = mysqli_fetch_array($query_viewblogs)) {
 </div>
 
 </div>
-    <div id="SavedCommentBox"> 
+<?php
+$j=0;
+while($row_comments = mysqli_fetch_array($query_viewcomments)) {
+  
+  ?>    
+<div class="ui error form " style="height:56ex;">
+    <div id="SavedCommentBox" > 
+    <div class="blurred-box">
+    <h4 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo "Username: ", $row_comments["username"]; ?></h4>
+    <br><p style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo "Date: ", $row_comments["cdate"]; ?></p>
+    <br><p style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo "Sentiment: ", $row_comments["sentiment"]; ?></p>
+    <br><p style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo $row_comments["comment_desc"], "\n"; ?></p>
 </div>
+<?php
+$j++;
+}
+?>
 </div>
     </div>
 </div>
 </div>
+</div>
+</div>
+</div>
+</form>
 <?php
 $i++;
 }

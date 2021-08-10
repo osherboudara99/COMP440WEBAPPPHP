@@ -59,26 +59,26 @@ divThree.appendChild(txt);
 function likeComment(){
     var title =document.getElementById("editCommentsBox");
     var written =title.value;
-   if(written.endsWith("-Negative")|| written.endsWith("-Positive")){
+   if(written.endsWith("*Negative")|| written.endsWith("*Positive")){
       
     var array = written.split("-",1);
     var a= array.toString();
-    title.value=a.trim()+"\n -Positive"
+    title.value=a.trim()+"\n *Positive"
 
    }else{
-    var posWritten=title.value+"\n -Positive";
+    var posWritten=title.value+"\n *Positive";
     title.value=posWritten;
 }
 }
 function dislikeComment(){
     var title =document.getElementById("editCommentsBox");
     var written =title.value;
-    if(written.endsWith("-Negative")|| written.endsWith("-Positive")){
+    if(written.endsWith("*Negative")|| written.endsWith("*Positive")){
         var array = written.split("-",1);
         var a= array.toString();
-        title.value=a.trim()+"\n -Negative"
+        title.value=a.trim()+"\n *Negative"
        }else{
-        var posWritten=title.value+"\n -Negative";
+        var posWritten=title.value+"\n *Negative";
         title.value=posWritten;
     }
    
