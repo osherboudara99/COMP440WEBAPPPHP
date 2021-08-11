@@ -131,17 +131,18 @@ function likeComment(num){
   
     var title =document.getElementById(word);
     var written =title.value;
-    alert(title.value);
-    if(written.endsWith("*Negative")|| written.endsWith("*Positive")){
+    if(written.endsWith("*negative")|| written.endsWith("*positive")){
       
         var array = written.split("*",1);
         var a= array.toString();
         title.value=a.trim()+"\n *positive";
     
        }
+    else{
 
-    var posWritten=title.value+"\n *s;klfhgj";
+    var posWritten=title.value+"\n *positive";
     title.value=posWritten.toLowerCase();
+    }
 }
 function dislikeComment(num){
     var word="editCommentsBox"+ num;
@@ -152,7 +153,7 @@ function dislikeComment(num){
         var a= array.toString();
         title.value=a.trim()+"\n *negative";
        }else{
-        var posWritten=title.value+"\n *fg;ljksafg";
+        var posWritten=title.value+"\n *negative";
         title.value=posWritten.toLowerCase();
     }
    
