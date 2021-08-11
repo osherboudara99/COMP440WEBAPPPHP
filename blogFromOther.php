@@ -90,7 +90,7 @@ WHERE blogs.subject = '".$row["subject"]."'");
 <div class="row">
   <div class="leftcolumn"style="width:60%;">
     <div class="card">
-    <div class="blurred-box" style="height:90ex; margin-left:15%;">
+    <div class="blurred-box" style="height: 120ex; margin-left:15%;">
     <div class="Description box">
 <h2 class ="descr" id="displayDescr"style="font-family:Lobster Two; display:block; color:antiquewhite;"><?php echo $row["description"]; ?></h2>
 <input name="description" style="display:none; " value ="<?php echo $row["description"]; ?>">
