@@ -87,6 +87,7 @@ CREATE TABLE `comments` (
   PRIMARY KEY (`commentid`),
   KEY `comments_ibfk_2` (`blogid`),
   KEY `test_idx` (`authorid`),
+  UNIQUE KEY `blogid_authorid_UNIQUE` (`authorid`, `blogid`),
   CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`blogid`) REFERENCES `blogs` (`blogid`),
   CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`authorid`) REFERENCES `Users` (`userid`),
   CONSTRAINT `sentiment_types` CHECK ((`sentiment` in (_utf8mb4'negative',_utf8mb4'positive')))

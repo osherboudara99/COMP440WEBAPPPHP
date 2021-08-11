@@ -77,11 +77,11 @@ WHERE blogs.subject = '".$row["subject"]."'");
 <div class="blurred-box" id="titleBlurredBox"style="height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
       <div class="titleCont">
     <h1 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo $row["subject"]; ?></h1>
-    <input name="subject" style="display:none; " value =<?php echo $row["subject"]; ?>>
+    <input name="subject" style="display:none; " value ="<?php echo $row["subject"]; ?>">
     <h4 class = "head" id="displayUser"style="font-family:Lobster Two; display:block;"><?php echo $row["username"]; ?></h4>
-    <input name="username" style="display:none; " value =<?php echo $row["username"]; ?>>
+    <input name="usernames" style="display:none; " value ="<?php echo $row["username"]; ?>">
     <h5 class = "head"  id="displayDate"style="font-family:Lobster Two; display:block;"><?php echo $row["pdate"]; ?></h5>
-    <input name="pdate" style="display:none; " value =<?php echo $row["pdate"]; ?>>
+    <input name="pdate" style="display:none; " value ="<?php echo $row["pdate"]; ?>">
 </div>
 </div>
 </div>  
@@ -93,7 +93,7 @@ WHERE blogs.subject = '".$row["subject"]."'");
     <div class="blurred-box" style="height:90ex; margin-left:15%;">
     <div class="Description box">
 <h2 class ="descr" id="displayDescr"style="font-family:Lobster Two; display:block; color:antiquewhite;"><?php echo $row["description"]; ?></h2>
-<input name="description" style="display:none; " value =<?php echo $row["description"]; ?>>
+<input name="description" style="display:none; " value ="<?php echo $row["description"]; ?>">
 </div>
 </div>
 
@@ -132,7 +132,7 @@ WHERE blogs.subject = '".$row["subject"]."'");
     <i class="save icon"></i>
   </div>
 </button>
-<div style="width:32%; display:none" id="likeCommentButton" class="mini ui vertical animated blue button"  onclick="likeComment()" >
+<div style="width:32%; display:none" id="likeCommentButton" class="mini ui vertical animated blue button"  onclick="likeComment();" >
   <div class="hidden content">Like</div>
   <div class="visible content">
     <i class="thumbs up icon"></i>
