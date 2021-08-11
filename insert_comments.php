@@ -12,10 +12,11 @@ $pdate = strval($_POST["pdate"]);
 
 
 $query_insertcomments = $conn->prepare("INSERT INTO comments (`sentiment`, `description`, `cdate`, `blogid`, `authorid`) 
-VALUES (?, ?, DATE(NOW()), (SELECT blogid FROM blogs WHERE subject = ? AND description = ? AND pdate = ?), 
+VALUES (?, ?, DATE(NOW()), 
+(SELECT blogid FROM blogs INNER JOIN Users ON Users.userid = blogs.userid WHERE blogs.pdate = ? AND blogs.subject = ? AND username = ?), 
 (SELECT userid FROM Users WHERE username = ?))");
 
-$query_insertcomments->bind_param("ssssss", $description_sentiment[1], $description_sentiment[0], $subject, $desc, $pdate, $_SESSION['username']);
+$query_insertcomments->bind_param("ssssss", $description_sentiment[1], $description_sentiment[0], $pdate, $subject, $_SESSION['username'], $_SESSION['username']);
 
 $query_insertcomments->execute();
 header("refresh:5;url=blogFromOther.php"); 
