@@ -131,28 +131,29 @@ function likeComment(num){
   
     var title =document.getElementById(word);
     var written =title.value;
-   if(written.endsWith("*negative")|| written.endsWith("*positive")){
+    alert(title.value);
+    if(written.endsWith("*Negative")|| written.endsWith("*Positive")){
       
-    var array = written.split("-",1);
-    var a= array.toString();
-    title.value=a.trim()+"\n *positive"
+        var array = written.split("*",1);
+        var a= array.toString();
+        title.value=a.trim()+"\n *positive";
+    
+       }
 
-   }else{
-    var posWritten=title.value+"\n *positive";
-    title.value=posWritten;
-}
+    var posWritten=title.value+"\n *s;klfhgj";
+    title.value=posWritten.toLowerCase();
 }
 function dislikeComment(num){
     var word="editCommentsBox"+ num;
     var title =document.getElementById(word);
     var written =title.value;
     if(written.endsWith("*negative")|| written.endsWith("*positive")){
-        var array = written.split("-",1);
+        var array = written.split("*",1);
         var a= array.toString();
-        title.value=a.trim()+"\n *negative"
+        title.value=a.trim()+"\n *negative";
        }else{
-        var posWritten=title.value+"\n *negative";
-        title.value=posWritten;
+        var posWritten=title.value+"\n *fg;ljksafg";
+        title.value=posWritten.toLowerCase();
     }
    
 }

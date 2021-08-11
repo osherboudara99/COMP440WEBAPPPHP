@@ -122,7 +122,7 @@ WHERE blogs.subject = '".$row["subject"]."'");
   </div>
 </div>
 
-<div class="ui error form " style="height:100ex;">
+<div class="ui error form " style="height:130ex;">
 <div class="field error">
     <input type="text" name="comment_desc" class="makeComments" id="editCommentsBox" value="" placeholder="Comments..." style="height:15ex; display:none;" required>
     <div class = "positiveButtons">
@@ -132,13 +132,13 @@ WHERE blogs.subject = '".$row["subject"]."'");
     <i class="save icon"></i>
   </div>
 </button>
-<div style="width:32%; display:none" id="likeCommentButton" class="mini ui vertical animated blue button"  onclick="likeComment();" >
+<div style="width:32%; display:none" id="likeCommentButton" class="mini ui vertical animated blue button" >
   <div class="hidden content">Like</div>
   <div class="visible content">
     <i class="thumbs up icon"></i>
   </div>
 </div>
-<div style="width:30%; display:none" id="dislikeCommentButton" class="mini ui vertical animated blue button"  onclick="dislikeComment()" >
+<div style="width:30%; display:none" id="dislikeCommentButton" class="mini ui vertical animated blue button" >
   <div class="hidden content">Dislike</div>
   <div class="visible content">
     <i class="thumbs down icon"></i>
@@ -168,6 +168,8 @@ $j++;
 ?>
 </div>
     </div>
+</div>
+</div>
 </div>
 </div>
 </div>
