@@ -77,7 +77,7 @@ WHERE blogs.subject = '".$row["subject"]."'");
 <div class="row">
   <div class="leftcolumn"style="width:65%;">
     <div class="card">
-    <div class="blurred-box" style="height:50ex; margin-left:10%;">
+    <div class="blurred-box" style="height:90ex; margin-left:10%;">
     <div class="Description box">
 <h2 class ="descr" id="displayDescr"style="font-family:Lobster Two; display:block; color:antiquewhite;"><?php echo $row["description"]; ?></h2>
 </div>
@@ -86,7 +86,7 @@ WHERE blogs.subject = '".$row["subject"]."'");
 </div>
 
     <div class="card">
-    <div class="blurred-box"style="height:20ex; margin-left:10%;">
+    <div class="blurred-box"style="height:22ex; margin-left:10%;">
       <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo $row["tags"]; ?></h2>
 
 
@@ -106,7 +106,7 @@ $j=0;
 while($row_comments = mysqli_fetch_array($query_viewcomments)) {
   
   ?>    
-<div class="ui error form " style="height:56ex;">
+<div class="ui error form " style="height:100ex;">
     <div id="SavedCommentBox" > 
     <div class="blurred-box">
     <h4 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo "Username: ", $row_comments["username"]; ?></h4>
@@ -122,7 +122,7 @@ $j++;
     </div>
 </div>
 </div>
-
+</div>
 <?php
 $i++;
 }

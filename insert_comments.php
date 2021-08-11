@@ -3,7 +3,7 @@ include("db.php");
 
 session_start();
 
-$description = strval($_POST["comment_desc"]);
+$description = htmlspecialchars($_POST["comment_desc"]);
 $description_sentiment = explode("*", $description);
 
 $subject = strval($_POST["subject"]);
@@ -18,5 +18,5 @@ VALUES (?, ?, DATE(NOW()), (SELECT blogid FROM blogs WHERE subject = ? AND descr
 $query_insertcomments->bind_param("ssssss", $description_sentiment[1], $description_sentiment[0], $subject, $desc, $pdate, $_SESSION['username']);
 
 $query_insertcomments->execute();
-
+header("refresh:5;url=blogFromOther.php"); 
 ?>

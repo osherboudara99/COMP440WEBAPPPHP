@@ -37,6 +37,10 @@
 
 <div id="title">
 <meta charset="UTF-8">
+<script type="text/javascript">
+        
+        window.onload = load;
+        </script>
 <?php
 include("db.php");
 
@@ -67,32 +71,36 @@ ON blogs.blogid = comments.blogid
 WHERE blogs.subject = '".$row["subject"]."'");
   
   ?>
-<hr size="8" style="margin-top:10%;" width="90%" color="white">  
+<hr size="8"  width="90%" color="white">  
 <form action="insert_comments.php" method="post">
 <div class="header">
 <div class="blurred-box" id="titleBlurredBox"style="height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
       <div class="titleCont">
     <h1 class ="head" name="subject" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo $row["subject"]; ?></h1>
+    <input name="subject" style="display:none; " value =<?php echo $row["subject"]; ?>>
     <h4 class = "head" name="username" id="displayUser"style="font-family:Lobster Two; display:block;"><?php echo $row["username"]; ?></h4>
+    <input name="username" style="display:none; " value =<?php echo $row["username"]; ?>>
     <h5 class = "head" name="pdate" id="displayDate"style="font-family:Lobster Two; display:block;"><?php echo $row["pdate"]; ?></h5>
+    <input name="pdate" style="display:none; " value =<?php echo $row["pdate"]; ?>>
 </div>
 </div>
 </div>  
   </div>
 
 <div class="row">
-  <div class="leftcolumn"style="width:65%;">
+  <div class="leftcolumn"style="width:60%;">
     <div class="card">
-    <div class="blurred-box" style="height:50ex; margin-left:10%;">
+    <div class="blurred-box" style="height:90ex; margin-left:15%;">
     <div class="Description box">
 <h2 class ="descr" name="description" id="displayDescr"style="font-family:Lobster Two; display:block; color:antiquewhite;"><?php echo $row["description"]; ?></h2>
+<input name="description" style="display:none; " value =<?php echo $row["description"]; ?>>
 </div>
 </div>
 
 </div>
 
     <div class="card">
-    <div class="blurred-box"style="height:20ex; margin-left:10%;">
+    <div class="blurred-box"style="height:24ex; margin-left:15%;">
       <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo $row["tags"]; ?></h2>
 
 
@@ -107,23 +115,23 @@ WHERE blogs.subject = '".$row["subject"]."'");
     <div class="card">
     <div class="blurred-box">
       <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;">Comments</h2>
-      <div class="mini ui vertical animated blue button" style="margin-left:44ex;" onclick="addComment()">
+      <div class="mini ui vertical animated blue button 2" id="saveButton2"style="margin-left:44ex;" >
   <div class="hidden content">Add</div>
   <div class="visible content">
     <i class="plus icon" ></i>
   </div>
 </div>
-<div class="ui error form " style="height:56ex;">
+
+<div class="ui error form " style="height:100ex;">
 <div class="field error">
-    <textarea type="text" name="comment_desc" id="editCommentsBox" value="" placeholder="Comments..." style="height:15ex; display:none;">
-    </textarea>
+    <input type="text" name="comment_desc" class="makeComments" id="editCommentsBox" value="" placeholder="Comments..." style="height:15ex; display:none;" required>
     <div class = "positiveButtons">
-    <div type="submit" style="width:32%; display:none" id="saveCommentButton" class="mini ui vertical animated blue button"  onclick="saveComment()" >
+    <button type="submit" style="width:32%; display:none" id="saveCommentButton" class="mini ui vertical animated blue button" >
   <div class="hidden content">Save</div>
   <div class="visible content">
     <i class="save icon"></i>
   </div>
-</div>
+</button>
 <div style="width:32%; display:none" id="likeCommentButton" class="mini ui vertical animated blue button"  onclick="likeComment()" >
   <div class="hidden content">Like</div>
   <div class="visible content">
@@ -145,10 +153,10 @@ WHERE blogs.subject = '".$row["subject"]."'");
 $j=0;
 while($row_comments = mysqli_fetch_array($query_viewcomments)) {
   
-  ?>    
-<div class="ui error form " style="height:56ex;">
+  ?> 
+<div class="ui error form " style="height:40ex;">
     <div id="SavedCommentBox" > 
-    <div class="blurred-box">
+    <div class="blurred-box" >
     <h4 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo "Username: ", $row_comments["username"]; ?></h4>
     <br><p style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo "Date: ", $row_comments["cdate"]; ?></p>
     <br><p style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo "Sentiment: ", $row_comments["sentiment"]; ?></p>
@@ -165,7 +173,9 @@ $j++;
 </div>
 </div>
 </div>
+</div>
 </form>
+
 <?php
 $i++;
 }
