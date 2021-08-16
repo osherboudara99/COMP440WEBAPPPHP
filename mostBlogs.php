@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
 <link rel="stylesheet" href="style2.css">
 <script src="blogShowFunctions.js"></script>
+<h1 class ="head" id="displayTitle"style="font-family:Lobster Two; text-align: center;display:block;">Users With Most Blogs</h1>
 <hr size="8"  width="90%" color="white">  
 
 <form action="" method="post">

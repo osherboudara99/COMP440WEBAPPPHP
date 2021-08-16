@@ -30,7 +30,7 @@
   <button class="ui button" style="width:10%; margin-left:12%"onclick="location.href='blogFromMe.php'">
   <i class=" file alternate icon"></i>My Blogs</button>
   <button class="ui button" style="width:10%; margin-left:12%"onclick="location.href='moreInfo.php'">
-  <i class=" file alternate icon"></i>More Info</button>
+  <i class=" bars icon"></i>More Info</button>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
 <link rel="stylesheet" href="style2.css">
@@ -43,6 +43,7 @@
         
         window.onload = load;
         </script>
+        <h1 style="font-family:Lobster Two; text-align: center;display:block;">Blogs</h1>
 <?php
 include("db.php");
 
