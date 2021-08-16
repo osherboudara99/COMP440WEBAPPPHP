@@ -1,14 +1,16 @@
-<div class="five ui blue buttons" style="margin-bottom:2%; margin-top:2%; ">
-  <button class="ui button" style="width:12%; margin-left:7%"onClick="location.href='blogCreate.php'">
-  <i class=" edit icon"></i>My Blogs With Positive Comments</button>
-  <button class="ui button"style="width:12%;margin-left:7%" onClick="location.href='blogFromOther.php'">
-  <i class=" book icon"></i>Most Blogs On a Specific Date</button>
-  <button class="ui button" style="width:12%; margin-left:7%"onclick="location.href='blogFromMe.php'">
-  <i class=" file alternate icon"></i>Users Followed by Specificed Users</button>
-  <button class="ui button" style="width:12%; margin-left:7%"onclick="location.href='moreInfo.php'">
-  <i class=" file alternate icon"></i>Blogs thatContain a Certain Tag</button>
-  <button class="ui button" style="width:12%; margin-left:7%"onclick="location.href='moreInfo.php'">
-  <i class=" file alternate icon"></i>Display All Users that Have Not Posted Comments</button>
+<div class="six ui blue buttons" style="margin-bottom:2%; margin-top:2%; ">
+  <button class="ui button" style="width:12%; margin-left:4%"onClick="location.href='moreInfo.php'">
+  <i class=" comment alternative icon"></i>My Blogs With Positive Comments</button>
+  <button class="ui button"style="width:12%;margin-left:4%" onClick="location.href='mostBlogs.php'">
+  <i class=" calendar alternative outline icon"></i>Most Blogs On a Specific Date</button>
+  <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='blogFromMe.php'">
+  <i class=" user icon"></i>Users Followed by Specificed Users</button>
+  <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='moreInfo.php'">
+  <i class=" tags icon"></i>Blogs that Contain a Certain Tag</button>
+  <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='moreInfo.php'">
+  <i class=" user outline icon"></i>Display All Users that Have Not Posted Comments</button>
+  <button class="ui button"style="width:12%;margin-left:4%" onClick="location.href='blogFromOther.php'">
+  <i class=" home icon"></i>Main Menu</button>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/1.11.8/semantic.min.css" />
 <link rel="stylesheet" href="style2.css">
@@ -23,10 +25,10 @@ session_start();
 $sql_viewblogs_poscomments1 = $conn->query("SELECT subject, blogs.description, pdate, GROUP_CONCAT(DISTINCT tag SEPARATOR ',') AS tags, username FROM Users 
 INNER JOIN blogs ON Users.userid = blogs.userid 
 INNER JOIN blogstags ON blogs.blogid = blogstags.blogid 
-INNER JOIN comments ON comments.authorid = blogs.userid
+INNER JOIN comments ON comments.blogid = blogs.blogid
 WHERE username = '".$_SESSION['username']."' AND sentiment LIKE '%positive%'
 GROUP BY blogstags.blogid
-ORDER BY pdate DESC"); //session username chnaged to user input
+ORDER BY pdate DESC");
 
 
 
@@ -41,13 +43,14 @@ while($row = mysqli_fetch_array($sql_viewblogs_poscomments1)) {
     ON blogs.blogid = comments.blogid
     WHERE blogs.subject = '".$row["subject"]."' AND sentiment LIKE '%positive%'");
   ?>
-<hr size="8" width="90%" color="white">  
+<h1 class ="head" id="displayTitle"style="font-family:Lobster Two; text-align: center;display:block;">My Blogs With Only Positive Comments</h1>
+<hr size="8" width="90%" color="white"> 
 <div class="header">
 <div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
       <div class="titleCont">
-    <h1 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo $row["subject"]; ?></h1>
-    <h4 class = "head" id="displayUser"style="font-family:Lobster Two; display:block;"><?php echo $row["username"]; ?></h4>
-    <h5 class = "head" id="displayDate"style="font-family:Lobster Two; display:block;"><?php echo $row["pdate"]; ?></h5>
+    <h1 class ="head" id="displayTitle"style=" color:antiquewhite; font-family:Lobster Two; display:block;"><?php echo $row["subject"]; ?></h1>
+    <h4 class = "head" id="displayUser"style=" color:antiquewhite;font-family:Lobster Two; display:block;"><?php echo $row["username"]; ?></h4>
+    <h5 class = "head" id="displayDate"style="color:antiquewhite; font-family:Lobster Two; display:block;"><?php echo $row["pdate"]; ?></h5>
 </div>
 </div>
 </div>  
@@ -86,6 +89,7 @@ while($row_comments = mysqli_fetch_array( $sql_viewpositivecomments1 )) {
   
   ?>    
 <div class="ui error form " style="height:100ex;">
+
     <div id="SavedCommentBox" > 
     <div class="blurred-box">
     <h4 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo "Username: ", $row_comments["username"]; ?></h4>

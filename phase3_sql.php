@@ -20,6 +20,7 @@ ON blogs.blogid = comments.blogid
 WHERE blogs.subject = '".$row["subject"]."' AND sentiment LIKE '%positive%'"; //must retrieve subject from above query
 
 
+
 $sql_mostblogsdate2 = "SELECT username, COUNT(blogid) AS blog_amount FROM Users
 INNER JOIN blogs
 ON blogs.userid = Users.userid
