@@ -20,13 +20,13 @@
 include("db.php");
 
 session_start();
-$sql_viewblogs_poscomments1 = "SELECT subject, blogs.description, pdate, GROUP_CONCAT(DISTINCT tag SEPARATOR ',') AS tags, username FROM Users 
+$sql_viewblogs_poscomments1 = $conn->query("SELECT subject, blogs.description, pdate, GROUP_CONCAT(DISTINCT tag SEPARATOR ',') AS tags, username FROM Users 
 INNER JOIN blogs ON Users.userid = blogs.userid 
 INNER JOIN blogstags ON blogs.blogid = blogstags.blogid 
 INNER JOIN comments ON comments.authorid = blogs.userid
 WHERE username = '".$_SESSION['username']."' AND sentiment LIKE '%positive%'
 GROUP BY blogstags.blogid
-ORDER BY pdate DESC"; //session username chnaged to user input
+ORDER BY pdate DESC"); //session username chnaged to user input
 
 
 
@@ -34,12 +34,12 @@ ORDER BY pdate DESC"; //session username chnaged to user input
 <?php
 $i=0;
 while($row = mysqli_fetch_array($sql_viewblogs_poscomments1)) {
-    $sql_viewpositivecomments1 = "SELECT username, sentiment, comments.description AS comment_desc, cdate FROM comments
+    $sql_viewpositivecomments1 = $conn->query("SELECT username, sentiment, comments.description AS comment_desc, cdate FROM comments
     INNER JOIN Users
     ON comments.authorid = Users.userid
     INNER JOIN blogs
     ON blogs.blogid = comments.blogid
-    WHERE blogs.subject = '".$row["subject"]."' AND sentiment LIKE '%positive%'";
+    WHERE blogs.subject = '".$row["subject"]."' AND sentiment LIKE '%positive%'");
   ?>
 <hr size="8" width="90%" color="white">  
 <div class="header">
