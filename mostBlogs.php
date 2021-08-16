@@ -138,8 +138,6 @@ $i++;
         }
     } else{
             document.getElementById("notifyDate").style.display = "none";
-            document.getElementById("displayDate").innerHTML = dateValue;
-            document.getElementById("displayDate").style.display="block";
             document.getElementById("submitDateButton").style.display="block";
         
         
