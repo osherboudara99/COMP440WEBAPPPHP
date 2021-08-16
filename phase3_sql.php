@@ -21,10 +21,12 @@ WHERE blogs.subject = '".$row["subject"]."' AND sentiment LIKE '%positive%'"; //
 
 
 
-$sql_mostblogsdate2 = "SELECT username, COUNT(blogid) AS blog_amount FROM Users
-INNER JOIN blogs
+$sql_mostblogsdate2 = "SELECT username, MAX(blog_amount) AS blog_amount FROM 
+(SELECT COUNT(*) AS blog_amount, username FROM blogs 
+INNER JOIN Users
 ON blogs.userid = Users.userid
-WHERE pdate = '2020-10-10'"; //chnage date to user input
+WHERE pdate = '2020-04-06'
+GROUP BY username) AS blogs_amount_subquery"; //chnage date to user input
 
 $sql_followedbytwousers3 = "SELECT a.username AS followed FROM follows
 INNER JOIN Users AS a
