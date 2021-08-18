@@ -33,7 +33,7 @@ INNER JOIN Users AS a
 ON a.userid = leaderid
 INNER JOIN Users AS b
 ON b.userid = followerid
-WHERE b.username IN ('catlover', 'scooby') 
+WHERE b.username IN (?, ?) 
 GROUP BY a.username 
 HAVING COUNT(*) = 2"; //chnage catlover to variable and scooby
 

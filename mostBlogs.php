@@ -5,7 +5,7 @@
   <i class=" calendar alternative outline icon"></i>Most Blogs On a Specific Date</button>
   <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='followers.php'">
   <i class=" user icon"></i>Users Followed by Specificed Users</button>
-  <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='moreInfo.php'">
+  <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='tagblogs.php'">
   <i class=" tags icon"></i>Blogs that Contain a Certain Tag</button>
   <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='moreInfo.php'">
   <i class=" user outline icon"></i>Display All Users that Have Not Posted Comments</button>
@@ -51,9 +51,17 @@
 include ("db.php");
 @$date_val = strval($_POST["date_input"]); 
 
+?>
+<div class="header" style="display:block;" id="header">
+<hr size="8" width="90%" color="white">  
+<div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
+      <div class="titleCont">
 
+    <h4 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo $date_val; ?></h4>
 
-$sql_mostblogsdate2 = $conn->prepare("SELECT username, MAX(blog_amount) AS blog_amount FROM 
+<?php
+
+$sql_mostblogsdate2 = $conn->prepare("SELECT username, blog_amount  FROM 
 (SELECT COUNT(*) AS blog_amount, username FROM blogs 
 INNER JOIN Users
 ON blogs.userid = Users.userid
@@ -69,22 +77,18 @@ $i = 0;
 while($row_mostblogs = $mostblogs_result->fetch_assoc()) {
 
 ?>
-<div class="header" style="display:block;" id="header">
-<hr size="8" width="90%" color="white">  
-<div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
-      <div class="titleCont">
-      <h4 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo $date_val; ?></h4>
-    <h4 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php if($row_mostblogs["username"] === NULL){echo "There are no posts for this date or this date does not exist.";} else{ echo "Username: ", $row_mostblogs["username"], " Total Blogs: ", $row_mostblogs["blog_amount"];} ?></h4>
-</div>
-</div>
-</div>  
-  </div>
+    <h4 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php if($row_mostblogs["username"] === NULL){ if($date_val === NULL){echo "No date has been inputted yet.";} else{echo "There are no posts for this date or this date does not exist.";}} else{ echo "Username: ", $row_mostblogs["username"], " Total Blogs: ", $row_mostblogs["blog_amount"];} ?></h4>
 
 <?php
 $i++;
 }
 
 ?>
+
+</div>
+</div>
+</div>  
+  </div>
 
 
   
