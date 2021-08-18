@@ -20,6 +20,8 @@
 
 
 <form action="" method="post">
+    <?php $userX = NULL;
+$userY = NULL; ?>
 <div class="blurred-box" id="titleBlurredBox"style="height:30ex;margin-top:5%; margin-left:20%;margin-right:20%; vertical-align:top;">
 <div class="ui error form " style="height:20ex; margin-bottom:2%;">
 <div class="field error">
@@ -76,7 +78,9 @@ while($row_followers = $followers_result->fetch_assoc()) {
 $i++;
 }
 
-if($val != 1){?>
+
+if($val != 1){
+    if($userX != NULL){?>
     <h4 class ="head" id="displayPHPERROR"style="font-family:Lobster Two;" onload="load1()"><?php 
         
     
@@ -84,6 +88,7 @@ if($val != 1){?>
         
     <?php
     }
+}
 
 ?>
 
