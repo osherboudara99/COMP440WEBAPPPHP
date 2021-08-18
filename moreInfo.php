@@ -3,7 +3,7 @@
   <i class=" comment alternative icon"></i>My Blogs With Positive Comments</button>
   <button class="ui button"style="width:12%;margin-left:4%" onClick="location.href='mostBlogs.php'">
   <i class=" calendar alternative outline icon"></i>Most Blogs On a Specific Date</button>
-  <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='blogFromMe.php'">
+  <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='followers.php'">
   <i class=" user icon"></i>Users Followed by Specificed Users</button>
   <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='moreInfo.php'">
   <i class=" tags icon"></i>Blogs that Contain a Certain Tag</button>

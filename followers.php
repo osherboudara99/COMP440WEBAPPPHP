@@ -23,13 +23,8 @@
 <div class="ui error form " style="height:20ex; margin-bottom:2%;">
 <div class="field error">
 <div class="titleCont">
-    <input name="date_input" id="inputDateBox" onkeyup="onKeyDate()"style="display:inline-block; margin-left:15%; width: 50% "placeholder="Please Enter a Date as YYYY-MM-DD..." value ="" required>
-    <button type="button" style="width:10%;" id="saveDateButton" class="ui vertical animated blue button" onclick="checkDate()" >
-  <div class="hidden content">Save</div>
-  <div class="visible content">
-    <i class="save icon"></i>
-  </div>
-</button>
+    <input name="userX" id="inputUserXBox" style="display:inline-block; margin-left:20%; width: 50% "placeholder="Please enter a user name..." value ="" required>
+    <input name="userY" id="inputUserYBox" style="display:inline-block; margin-left:20%; width: 50% "placeholder="Please enter a user name..." value ="" required>
 <div id="notifyDate" class="ui black message" style="display:none;">
                         <i class="close icon" onclick="hideDateError()"></i>
                         <div class="header">
@@ -40,7 +35,7 @@
 </div>
 </div> 
 </div> 
-<button type="submit" style="width:15%; margin-left:40%; margin-top:3%;display:none;" id="submitDateButton" class="ui vertical animated blue button"  >
+<button type="submit" style="width:15%; margin-left:40%; margin-top:3%;" id="submitDateButton" class="ui vertical animated blue button"  >
   <div class="hidden content">Submit</div>
   <div class="visible content">
     <i class="checkmark icon"></i>
