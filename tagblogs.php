@@ -44,7 +44,6 @@
 <div id="title">
 <meta charset="UTF-8">
 <h1 style="font-family:Lobster Two; text-align: center;display:block;">Blogs Containing Tag</h1>
-
 <form action="" method="post">
 <div class="blurred-box" id="titleBlurredBox"style="height:30ex;margin-top:5%; margin-left:20%;margin-right:20%; vertical-align:top;">
 <div class="ui error form " style="height:20ex; margin-bottom:2%;">

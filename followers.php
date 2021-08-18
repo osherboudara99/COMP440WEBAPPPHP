@@ -5,7 +5,7 @@
   <i class=" calendar alternative outline icon"></i>Most Blogs On a Specific Date</button>
   <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='followers.php'">
   <i class=" user icon"></i>Users Followed by Specificed Users</button>
-  <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='moreInfo.php'">
+  <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='tagblogs.php'">
   <i class=" tags icon"></i>Blogs that Contain a Certain Tag</button>
   <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='moreInfo.php'">
   <i class=" user outline icon"></i>Display All Users that Have Not Posted Comments</button>
