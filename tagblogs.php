@@ -8,7 +8,7 @@
   <i class=" user icon"></i>Users Followed by Specificed Users</button>
   <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='tagblogs.php'">
   <i class=" tags icon"></i>Blogs that Contain a Certain Tag</button>
-  <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='moreInfo.php'">
+  <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='noComments.php'">
   <i class=" user outline icon"></i>Display All Users that Have Not Posted Comments</button>
   <button class="ui button"style="width:12%;margin-left:4%" onClick="location.href='blogFromOther.php'">
   <i class=" home icon"></i>Main Menu</button>
@@ -21,6 +21,7 @@
 <div id="title">
 <meta charset="UTF-8">
 <h1 style="font-family:Lobster Two; text-align: center;display:block;">Blogs Containing Tag</h1>
+<hr size="8" width="90%" color="white">  
 <form action="" method="post">
 <?php @$tagX = NULL;
         @$new_tagX = NULL;?>
@@ -33,7 +34,7 @@
 </div>
 </div> 
 </div> 
-<button type="submit" style="width:15%; margin-left:45%; margin-top:3%;" id="submitButton" class="ui vertical animated blue button"  >
+<button type="submit" style="width:15%; margin-left:43%; margin-top:3%;" id="submitButton" class="ui vertical animated blue button"  >
   <div class="hidden content">Submit</div>
   <div class="visible content">
     <i class="checkmark icon"></i>
@@ -150,7 +151,9 @@ $j++;
 </div>
 </div>
 </div>
-
+</div>
+</div>
+</div>
 <?php
 $i++;
 }

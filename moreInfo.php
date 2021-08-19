@@ -7,7 +7,7 @@
   <i class=" user icon"></i>Users Followed by Specificed Users</button>
   <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='tagblogs.php'">
   <i class=" tags icon"></i>Blogs that Contain a Certain Tag</button>
-  <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='moreInfo.php'">
+  <button class="ui button" style="width:12%; margin-left:4%"onclick="location.href='noComments.php'">
   <i class=" user outline icon"></i>Display All Users that Have Not Posted Comments</button>
   <button class="ui button"style="width:12%;margin-left:4%" onClick="location.href='blogFromOther.php'">
   <i class=" home icon"></i>Main Menu</button>
