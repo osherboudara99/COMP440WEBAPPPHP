@@ -32,7 +32,7 @@ $userY = NULL; ?>
 </div>
 </div> 
 </div> 
-<button type="submit" style="width:15%; margin-left:40%; margin-top:3%;" id="submitButton" class="ui vertical animated blue button"  >
+<button type="submit" style="width:15%; margin-left:45%; margin-top:3%;" id="submitButton" class="ui vertical animated blue button"  >
   <div class="hidden content">Submit</div>
   <div class="visible content">
     <i class="checkmark icon"></i>

@@ -1,27 +1,4 @@
-<style>
-    @import url("https://fonts.googleapis.com/css2?family=Lobster+Two&family=Raleway:ital,wght@0,400;1,300&family=Staatliches&display=swap");
-    .head{
-    color:antiquewhite;
-    font-family: cursive;
-   
-    text-align:center;
-  
-    
-  }
-  #titleGroupBox{
-      flex-direction:row;
-      width:200ex;
-  }
-  .titleCont{
-  flex-grow: 3; /* default 0 */
-  
-  
-}
-  .buttonGroupTitle{
-    margin-left: 35%;
-    display: inline-block;
-  }
-</style>
+
 <div class="six ui blue buttons" style="margin-bottom:2%; margin-top:2%; ">
   <button class="ui button" style="width:12%; margin-left:4%"onClick="location.href='moreInfo.php'">
   <i class=" comment alternative icon"></i>My Blogs With Positive Comments</button>
@@ -54,7 +31,7 @@
 </div>
 </div> 
 </div> 
-<button type="submit" style="width:15%; margin-left:40%; margin-top:3%;" id="submitButton" class="ui vertical animated blue button"  >
+<button type="submit" style="width:15%; margin-left:45%; margin-top:3%;" id="submitButton" class="ui vertical animated blue button"  >
   <div class="hidden content">Submit</div>
   <div class="visible content">
     <i class="checkmark icon"></i>
@@ -70,9 +47,15 @@ include("db.php");
 session_start();
 ?>
 <div class="header" style="display:block;" id="header">
+
 <hr size="8" width="90%" color="white">  
-<div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
+<div class="blurred-box" id="titleBlurredBox"style="width:40%; height:6ex;margin-left:30%;margin-right:20%; margin-top:4%; vertical-align:top;">
       <div class="titleCont">
+        <h1 style="font-family:Lobster Two; display:block;">Tag Given: <?php echo $tagX;?></h1>
+      </div>
+</div>
+</div>
+
 <?php
 $sql_tagsearch= $conn->prepare("SELECT subject, blogs.description, pdate, GROUP_CONCAT(DISTINCT tag SEPARATOR ',') AS tags, username FROM Users 
 INNER JOIN blogs ON Users.userid = blogs.userid 
@@ -100,7 +83,7 @@ INNER JOIN blogs
 ON blogs.blogid = comments.blogid
 WHERE blogs.subject = '".$row_tags["subject"]."'");
   ?>
-<hr size="8" width="90%" color="white">  
+ 
 <div class="header">
 <div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
       <div class="titleCont">
@@ -161,6 +144,8 @@ $j++;
 </div>
 </div>
 </div>
+</div>
+
 <?php
 $i++;
 }
