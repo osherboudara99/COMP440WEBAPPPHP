@@ -68,34 +68,45 @@ include("db.php");
 
 
 session_start();
-
-$query_viewownblogs = $conn->query("SELECT subject, description, pdate, GROUP_CONCAT(tag SEPARATOR ',') AS tags, username FROM Users 
+?>
+<div class="header" style="display:block;" id="header">
+<hr size="8" width="90%" color="white">  
+<div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
+      <div class="titleCont">
+<?php
+$sql_tagsearch= $conn->prepare("SELECT subject, blogs.description, pdate, GROUP_CONCAT(DISTINCT tag SEPARATOR ',') AS tags, username FROM Users 
 INNER JOIN blogs ON Users.userid = blogs.userid 
 INNER JOIN blogstags ON blogs.blogid = blogstags.blogid 
-WHERE username = '".$_SESSION['username']."'
+INNER JOIN comments ON comments.authorid = blogs.userid
+WHERE tag LIKE ?
 GROUP BY blogstags.blogid
 ORDER BY pdate DESC");
 
+$sql_tagsearch->bind_param('s', $tagX);
+
+$sql_tagsearch->execute();
+$tags_result = $sql_tagsearch->get_result(); 
 
 
-?>
-<?php
-$i=0;
-while($row = mysqli_fetch_array($query_viewownblogs)) {
+$i = 0;
+$val = 0;
+if($tags_result->fetch_assoc()){
+while($row_tags = $tags_result->fetch_assoc())
+{
   $query_viewcomments = $conn->query("SELECT username, sentiment, comments.description AS comment_desc, cdate FROM comments
 INNER JOIN Users
 ON comments.authorid = Users.userid
 INNER JOIN blogs
 ON blogs.blogid = comments.blogid
-WHERE blogs.subject = '".$row["subject"]."'");
+WHERE blogs.subject = '".$row_tags["subject"]."'");
   ?>
 <hr size="8" width="90%" color="white">  
 <div class="header">
 <div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
       <div class="titleCont">
-    <h1 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo $row["subject"]; ?></h1>
-    <h4 class = "head" id="displayUser"style="font-family:Lobster Two; display:block;"><?php echo $row["username"]; ?></h4>
-    <h5 class = "head" id="displayDate"style="font-family:Lobster Two; display:block;"><?php echo $row["pdate"]; ?></h5>
+    <h1 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo $row_tags["subject"]; ?></h1>
+    <h4 class = "head" id="displayUser"style="font-family:Lobster Two; display:block;"><?php echo $row_tags["username"]; ?></h4>
+    <h5 class = "head" id="displayDate"style="font-family:Lobster Two; display:block;"><?php echo $row_tags["pdate"]; ?></h5>
 </div>
 </div>
 </div>  
@@ -106,7 +117,7 @@ WHERE blogs.subject = '".$row["subject"]."'");
     <div class="card">
     <div class="blurred-box" style="height:90ex; margin-left:10%;">
     <div class="Description box">
-<h2 class ="descr" id="displayDescr"style="font-family:Lobster Two; display:block; color:antiquewhite;"><?php echo $row["description"]; ?></h2>
+<h2 class ="descr" id="displayDescr"style="font-family:Lobster Two; display:block; color:antiquewhite;"><?php echo $row_tags["description"]; ?></h2>
 </div>
 </div>
 
@@ -114,7 +125,7 @@ WHERE blogs.subject = '".$row["subject"]."'");
 
     <div class="card">
     <div class="blurred-box"style="height:22ex; margin-left:10%;">
-      <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo $row["tags"]; ?></h2>
+      <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo $row_tags["tags"]; ?></h2>
 
 
 
@@ -152,6 +163,11 @@ $j++;
 </div>
 <?php
 $i++;
+}
+}
+else{
+    ?><h4 style="font-family:Lobster Two; text-align: center;display:block;">Tag does not exist.</h4>
+    <?php
 }
 ?>
 
