@@ -18,6 +18,7 @@
 
 <div id="title">
 <meta charset="UTF-8">
+<h1 class ="head" id="displayTitle"style="font-family:Lobster Two; text-align: center;display:block;">My Blogs With Only Positive Comments</h1>
 <?php
 include("db.php");
 
@@ -35,7 +36,9 @@ ORDER BY pdate DESC");
 ?>
 <?php
 $i=0;
+$val = 0;
 while($row = mysqli_fetch_array($sql_viewblogs_poscomments1)) {
+    $val =1;
     $sql_viewpositivecomments1 = $conn->query("SELECT username, sentiment, comments.description AS comment_desc, cdate FROM comments
     INNER JOIN Users
     ON comments.authorid = Users.userid
@@ -43,7 +46,6 @@ while($row = mysqli_fetch_array($sql_viewblogs_poscomments1)) {
     ON blogs.blogid = comments.blogid
     WHERE blogs.subject = '".$row["subject"]."' AND sentiment LIKE '%positive%'");
   ?>
-<h1 class ="head" id="displayTitle"style="font-family:Lobster Two; text-align: center;display:block;">My Blogs With Only Positive Comments</h1>
 <hr size="8" width="90%" color="white"> 
 <div class="header">
 <div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
@@ -109,6 +111,17 @@ $j++;
 <?php
 $i++;
 }
+if($val != 1){
+  ?>
+<hr size="8" width="90%" color="white"> 
+<div class="header">
+<div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
+      <div class="titleCont">
+      <h4 style="font-family:Lobster Two; display:inline-block; color:antiquewhite;"><?php echo "Blogs with positive comments for user '" . $_SESSION["username"] . "' do not exist."; ?></h4>
+
+      <?php
+}
+
 ?>
 
 

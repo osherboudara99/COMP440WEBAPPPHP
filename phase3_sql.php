@@ -46,13 +46,8 @@ WHERE tag LIKE '%dogs%'
 GROUP BY blogstags.blogid
 ORDER BY pdate DESC"; //change tag like parameter to variable
 
-$sql_nocommentsblogs5 = "SELECT subject, blogs.description, pdate, GROUP_CONCAT(DISTINCT tag SEPARATOR ',') AS tags, username FROM Users 
-INNER JOIN blogs ON Users.userid = blogs.userid 
-INNER JOIN blogstags ON blogs.blogid = blogstags.blogid 
-WHERE blogs.blogid NOT IN (SELECT DISTINCT comments.blogid FROM comments)
-GROUP BY blogstags.blogid
-ORDER BY pdate DESC";
-
+$sql_nocommentsblogs5 = "SELECT username FROM Users 
+WHERE userid NOT IN (SELECT DISTINCT comments.authorid FROM comments)";
 
 
 

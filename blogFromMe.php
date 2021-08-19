@@ -57,7 +57,9 @@ ORDER BY pdate DESC");
 ?>
 <?php
 $i=0;
+$val = 0;
 while($row = mysqli_fetch_array($query_viewownblogs)) {
+  $val = 1;
   $query_viewcomments = $conn->query("SELECT username, sentiment, comments.description AS comment_desc, cdate FROM comments
 INNER JOIN Users
 ON comments.authorid = Users.userid
@@ -129,6 +131,11 @@ $j++;
 <?php
 $i++;
 }
+if($val != 1){ ?>
+<div class="blurred-box" style="margin-top:20%;margin-left:20%;margin-right:20%">
+  <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite; text-align:center;"><i class="window close icon"></i>You have not created any blogs yet.</h1>
+</div>
+<?php }
 ?>
 
 

@@ -19,6 +19,7 @@
 <hr size="8"  width="90%" color="white">  
 
 <form action="" method="post">
+  <?php $date_val = NULL;?>
 <div class="blurred-box" id="titleBlurredBox"style="height:30ex;margin-top:5%; margin-left:20%;margin-right:20%; vertical-align:top;">
 <div class="ui error form " style="height:20ex; margin-bottom:2%;">
 <div class="field error">
@@ -74,16 +75,27 @@ $sql_mostblogsdate2->execute();
 
 $mostblogs_result = $sql_mostblogsdate2->get_result(); 
 $i = 0;
+$val = 0;
 while($row_mostblogs = $mostblogs_result->fetch_assoc()) {
+  $val = 1;
 
 ?>
-    <h4 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php if($row_mostblogs["username"] === NULL){ if($date_val === NULL){echo "No date has been inputted yet.";} else{echo "There are no posts for this date or this date does not exist.";}} else{ echo "Username: ", $row_mostblogs["username"], " Total Blogs: ", $row_mostblogs["blog_amount"];} ?></h4>
+    <h4 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo "Username: ", $row_mostblogs["username"], " Total Blogs: ", $row_mostblogs["blog_amount"];?></h4>
 
 <?php
 $i++;
 }
+if ($val != 1 && $date_val == NULL){
+  ?>
+  <h4 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;">No date has been inputted yet.</h4> <?php
+  }
+if ($val != 1 && $date_val != NULL){ ?>
+   <h4 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"> There are no posts for this date. </h4>
+  
+  <?php
+  }
+  ?>
 
-?>
 
 </div>
 </div>

@@ -20,10 +20,30 @@
 
 <div class="header" style="display:block;" id="header">
 
-<div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
+<div class="blurred-box" id="titleBlurredBox"style=" height:20ex;margin-left:20%;margin-right:20%; vertical-align:top;">
       <div class="titleCont">
+      <h3 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;">Usernames</h3>
+      <hr size="6" width="30%" color="snow">  
+      <?php
+      include("db.php");
+      
+      
 
-    <h4 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo "Username: "?></h4>
+$sql_nocommentsblogs5 = $conn->query("SELECT username FROM Users 
+WHERE userid NOT IN (SELECT DISTINCT comments.authorid FROM comments)");
+
+$i =0;
+while($row_nocomments = mysqli_fetch_array($sql_nocommentsblogs5)) {
+
+?>
+    <h4 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo $row_nocomments["username"]; ?></h4>
+
+<?php
+$i++;
+}
+
+?>
+
 </div>
 </div>
 </div>
