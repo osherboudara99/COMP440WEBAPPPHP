@@ -22,6 +22,8 @@
 <meta charset="UTF-8">
 <h1 style="font-family:Lobster Two; text-align: center;display:block;">Blogs Containing Tag</h1>
 <form action="" method="post">
+<?php @$tagX = NULL;
+        @$new_tagX = NULL;?>
 <div class="blurred-box" id="titleBlurredBox"style="height:30ex;margin-top:5%; margin-left:20%;margin-right:20%; vertical-align:top;">
 <div class="ui error form " style="height:20ex; margin-bottom:2%;">
 <div class="field error">
@@ -40,11 +42,12 @@
 </form>
 <?php
 include("db.php");
-
-@$tagX = strval($_POST['tagX']);
+@$tagX = strval($_POST["tagX"]);
 
 
 session_start();
+
+if($tagX != NULL){
 ?>
 <div class="header" style="display:block;" id="header">
 
@@ -57,25 +60,27 @@ session_start();
 </div>
 
 <?php
-$sql_tagsearch= $conn->prepare("SELECT subject, blogs.description, pdate, GROUP_CONCAT(DISTINCT tag SEPARATOR ',') AS tags, username FROM Users 
+}
+
+$new_tagX = '%'.$tagX.'%';
+
+$sql_tagsearch= $conn->prepare("SELECT subject, descr, pdate, tags, username FROM (SELECT subject, blogs.description AS descr, pdate, GROUP_CONCAT(DISTINCT tag SEPARATOR ',') AS tags, username FROM Users 
 INNER JOIN blogs ON Users.userid = blogs.userid 
 INNER JOIN blogstags ON blogs.blogid = blogstags.blogid 
-INNER JOIN comments ON comments.authorid = blogs.userid
-WHERE tag LIKE ?
 GROUP BY blogstags.blogid
-ORDER BY pdate DESC");
+ORDER BY pdate DESC) AS all_blogs
+WHERE tags LIKE ?");
 
-$sql_tagsearch->bind_param('s', $tagX);
+$sql_tagsearch->bind_param("s", $new_tagX);
 
 $sql_tagsearch->execute();
 $tags_result = $sql_tagsearch->get_result(); 
 
-
-$i = 0;
 $val = 0;
-if($tags_result->fetch_assoc()){
+$i = 0;
+if($tagX != NULL){
 while($row_tags = $tags_result->fetch_assoc())
-{
+{ $val=1;
   $query_viewcomments = $conn->query("SELECT username, sentiment, comments.description AS comment_desc, cdate FROM comments
 INNER JOIN Users
 ON comments.authorid = Users.userid
@@ -85,7 +90,7 @@ WHERE blogs.subject = '".$row_tags["subject"]."'");
   ?>
  
 <div class="header">
-<div class="blurred-box" id="titleBlurredBox"style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
+<div class="blurred-box" id="titleBlurredBox" style=" height:10ex;margin-left:20%;margin-right:20%; vertical-align:top;">
       <div class="titleCont">
     <h1 class ="head" id="displayTitle"style="font-family:Lobster Two; display:block;"><?php echo $row_tags["subject"]; ?></h1>
     <h4 class = "head" id="displayUser"style="font-family:Lobster Two; display:block;"><?php echo $row_tags["username"]; ?></h4>
@@ -93,14 +98,13 @@ WHERE blogs.subject = '".$row_tags["subject"]."'");
 </div>
 </div>
 </div>  
-  </div>
 
 <div class="row">
   <div class="leftcolumn"style="width:65%;">
     <div class="card">
     <div class="blurred-box" style="height:90ex; margin-left:10%;">
     <div class="Description box">
-<h2 class ="descr" id="displayDescr"style="font-family:Lobster Two; display:block; color:antiquewhite;"><?php echo $row_tags["description"]; ?></h2>
+<h2 class ="descr" id="displayDescr"style="font-family:Lobster Two; display:block; color:antiquewhite;"><?php echo $row_tags["descr"]; ?></h2>
 </div>
 </div>
 
@@ -115,6 +119,7 @@ WHERE blogs.subject = '".$row_tags["subject"]."'");
     </div>
   </div>
   </div>
+
  
 
 
@@ -150,9 +155,11 @@ $j++;
 $i++;
 }
 }
-else{
-    ?><h4 style="font-family:Lobster Two; text-align: center;display:block;">Tag does not exist.</h4>
+if($val != 1){
+    if($tagX != NULL){
+    ?><h4 id = "displayPHPERROR" style="font-family:Lobster Two; text-align: center;" onload="load1()">Tag does not exist.</h4>
     <?php
+    }
 }
 ?>
 
@@ -162,3 +169,10 @@ else{
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.css"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.js"></script>
 <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+<script>
+    
+    function load1(){
+        var blankInput =  document.getElementById("displayPHPERROR");
+        blankInput.style.display = "none";
+    }
+    </script>
