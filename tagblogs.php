@@ -63,16 +63,17 @@ if($tagX != NULL){
 <?php
 }
 
-$new_tagX = '%'.$tagX.'%';
 
-$sql_tagsearch= $conn->prepare("SELECT subject, descr, pdate, tags, username FROM (SELECT subject, blogs.description AS descr, pdate, GROUP_CONCAT(DISTINCT tag SEPARATOR ',') AS tags, username FROM Users 
+$sql_tagsearch= $conn->prepare("SELECT id, subject, descr, pdate, tags, username FROM (SELECT blogs.blogid AS id, subject, blogs.description AS descr, pdate, GROUP_CONCAT(DISTINCT tag SEPARATOR ',') AS tags, username FROM Users 
 INNER JOIN blogs ON Users.userid = blogs.userid 
 INNER JOIN blogstags ON blogs.blogid = blogstags.blogid 
 GROUP BY blogstags.blogid
 ORDER BY pdate DESC) AS all_blogs
-WHERE tags LIKE ?");
+INNER JOIN blogstags 
+ON id = blogstags.blogid
+WHERE tag = ?");
 
-$sql_tagsearch->bind_param("s", $new_tagX);
+$sql_tagsearch->bind_param("s", $tagX);
 
 $sql_tagsearch->execute();
 $tags_result = $sql_tagsearch->get_result(); 
