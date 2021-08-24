@@ -62,14 +62,20 @@ include ("db.php");
 
 <?php
 
-$sql_mostblogsdate2 = $conn->prepare("SELECT username, blog_amount  FROM 
+$sql_mostblogsdate2 = $conn->prepare("SELECT username, blog_amount FROM 
 (SELECT COUNT(*) AS blog_amount, username FROM blogs 
 INNER JOIN Users
 ON blogs.userid = Users.userid
 WHERE pdate = ?
-GROUP BY username) AS blogs_amount_subquery");
+GROUP BY username) AS blogs_amount_subquery
+WHERE blog_amount IN (SELECT blog_amount FROM (SELECT COUNT(*) AS blog_amount, username FROM blogs 
+INNER JOIN Users
+ON blogs.userid = Users.userid
+WHERE pdate = ?
+GROUP BY username) AS init
+HAVING MAX(blog_amount))");
 
-$sql_mostblogsdate2->bind_param('s', $date_val);
+$sql_mostblogsdate2->bind_param('ss', $date_val, $date_val);
 
 $sql_mostblogsdate2->execute();
 
