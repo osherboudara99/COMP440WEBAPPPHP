@@ -132,8 +132,11 @@ $j++;
 $i++;
 }
 if($val != 1){ ?>
-<div class="blurred-box" style="margin-top:20%;margin-left:20%;margin-right:20%">
-  <h2 style="font-family:Lobster Two; display:inline-block; color:antiquewhite; text-align:center;"><i class="window close icon"></i>You have not created any blogs yet.</h1>
+<hr size="8" width="90%" color="white"> 
+<div class="blurred-box" style="margin-top:10%;margin-left:20%;margin-right:20%">
+
+  <h2 style="font-family:Lobster Two; display:block; color:antiquewhite; text-align:center;">
+  <i class="window close icon"></i>You have not created any blogs yet.</h1>
 </div>
 <?php }
 ?>
